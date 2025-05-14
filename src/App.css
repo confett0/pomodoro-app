@@ -1,5 +1,8 @@
 :root {
     --background-color: #1E213F;
+    --text-color: #D7E0FF;
+    --accent-color: #F87070;
+    --timer-background-color: #161932;
 }
 
 * {
@@ -10,7 +13,7 @@
 
 #root {
   background-color: var(--background-color);
-  color: #fff;
+  color: var(--text-color);
   padding: 2rem;
   min-height: 100vh;
   text-align: center;
