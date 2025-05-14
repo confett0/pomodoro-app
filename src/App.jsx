@@ -1,5 +1,6 @@
 import './App.css'
 import Menu from './modules/menu'
+import Timer from './modules/timer'
 
 function App() {
 
@@ -7,6 +8,7 @@ function App() {
     <>
       <h1>pomodoro</h1>
       <Menu />
+      <Timer />
     </>
   )
 }
