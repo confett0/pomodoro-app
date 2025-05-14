@@ -57,6 +57,7 @@ li.active {
   color: var(--background-color);
 }
 
+
 .timer {
   background-color: var(--timer-background-color);
   border-radius: 50%;

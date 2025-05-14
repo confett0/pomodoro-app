@@ -13,7 +13,7 @@ function App() {
       setTimeLeft(prevTimeLeft => {
         if (prevTimeLeft === 0) {
           clearInterval(intervalRef.current)
-          intervalRef.current =null
+          intervalRef.current = null
           return 0
         }
        return prevTimeLeft - 1
@@ -23,11 +23,16 @@ function App() {
 
   const pauseTimer = () => clearInterval(intervalRef.current)
 
+  const setNewTimer = (newTimeLeft) => {
+    pauseTimer()
+    setTimeLeft(newTimeLeft)
+  }
+
   return (
     <>
       <h1>pomodoro</h1>
-      <Menu startTimer={startTimer} />
-      <Timer timeLeft={timeLeft} pauseTimer={pauseTimer} />
+      <Menu setNewTimer={setNewTimer} />
+      <Timer timeLeft={timeLeft} startTimer={startTimer} pauseTimer={pauseTimer} />
     </>
   )
 }
