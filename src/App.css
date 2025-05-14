@@ -44,7 +44,7 @@ nav ul {
 
 nav li {
   border-radius: 2rem;
-  height: 3.5rem;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,7 +55,6 @@ nav li {
 li.active {
   background-color: var(--accent-color);
   color: var(--background-color);
-
 }
 
 
