@@ -1,15 +1,26 @@
-export default function Menu({ setNewTimer }) {
-  const pomodoroSession = 25 * 60;
-  const shortBreak = 5 * 60;
-  const longBreak = 10 * 60;
+export default function Menu({ setNewTimer, activeTab, setActiveTab }) {
+  const tabs = [
+    { label: "pomodoro", duration: 25 * 60 },
+    { label: "short break", duration: 5 * 60 },
+    { label: "long break", duration: 10 * 60 },
+  ];
+  const handleClick = (label, duration) => {
+    setNewTimer(duration);
+    setActiveTab(label);
+  };
+
   return (
     <nav>
       <ul>
-        <li className="active" onClick={() => setNewTimer(pomodoroSession)}>
-          pomodoro
-        </li>
-        <li onClick={() => setNewTimer(shortBreak)}>short break</li>
-        <li onClick={() => setNewTimer(longBreak)}>long break</li>
+        {tabs.map(({ label, duration }) => (
+          <li
+            key={label}
+            className={activeTab === label ? "active" : ""}
+            onClick={() => handleClick(label, duration)}
+          >
+            {label}
+          </li>
+        ))}
       </ul>
     </nav>
   );

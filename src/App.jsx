@@ -7,6 +7,7 @@ function App() {
   const [timeLeft, setTimeLeft] = useState(25 * 60);
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [isTimerPaused, setIsTimerPaused] = useState(false);
+  const [activeTab, setActiveTab] = useState("pomodoro");
   const intervalRef = useRef(null);
 
   const startTimer = () => {
@@ -32,15 +33,19 @@ function App() {
 
   const setNewTimer = (newTimeLeft) => {
     clearInterval(intervalRef.current);
-    setIsTimerOn(false)
-    setIsTimerPaused(false)
+    setIsTimerOn(false);
+    setIsTimerPaused(false);
     setTimeLeft(newTimeLeft);
   };
 
   return (
     <>
       <h1>pomodoro</h1>
-      <Menu setNewTimer={setNewTimer} />
+      <Menu
+        setNewTimer={setNewTimer}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      />
       <Timer
         timeLeft={timeLeft}
         startTimer={startTimer}
