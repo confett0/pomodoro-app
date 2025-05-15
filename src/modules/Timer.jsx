@@ -6,12 +6,14 @@ export default function Timer({
   isTimerPaused,
 }) {
     const buttonText = !isTimerOn ? "Start" : isTimerPaused ? "Resume" : "Pause"
-    const handleClick = () => {
+    const handleClick = () => { // make it less confusing
         if (!isTimerOn ) {
             startTimer()
         } else {
             if (!isTimerPaused) {
                 pauseTimer()
+            } else {
+                startTimer()
             }
         }
 

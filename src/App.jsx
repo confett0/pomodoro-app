@@ -11,6 +11,7 @@ function App() {
 
   const startTimer = () => {
     setIsTimerOn(true);
+    setIsTimerPaused(false);
     intervalRef.current = setInterval(() => {
       setTimeLeft((prevTimeLeft) => {
         if (prevTimeLeft === 0) {
