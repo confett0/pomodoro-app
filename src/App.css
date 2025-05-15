@@ -28,9 +28,10 @@ nav {
   background-color: var(--timer-background-color);
   border-radius: 2rem;
   height: 3.5rem;
-  margin: 3rem auto 2.5rem;
+  margin: 3rem auto;
   padding: 0.3rem;
   width: min(20rem, 95%);
+  z-index: 2;
 }
 
 nav ul {
@@ -63,6 +64,7 @@ li.active {
   border-radius: 50%;
   height: min(25rem, 95vw);
   width: min(25rem, 95vw);
+  box-shadow: -50px -50px 50px #272C5A, 50px 50px 50px #121530;
 }
 
 .time-left {
