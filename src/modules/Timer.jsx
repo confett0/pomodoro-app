@@ -5,19 +5,14 @@ export default function Timer({
   isTimerOn,
   isTimerPaused,
 }) {
-    const buttonText = !isTimerOn ? "Start" : isTimerPaused ? "Resume" : "Pause"
-    const handleClick = () => { // make it less confusing
-        if (!isTimerOn ) {
-            startTimer()
-        } else {
-            if (!isTimerPaused) {
-                pauseTimer()
-            } else {
-                startTimer()
-            }
-        }
-
+  const buttonText = !isTimerOn ? "Start" : isTimerPaused ? "Resume" : "Pause";
+  const handleClick = () => {
+    if (!isTimerPaused && isTimerOn) {
+      pauseTimer();
+    } else {
+      startTimer();
     }
+  };
 
   return (
     <div className="timer">
