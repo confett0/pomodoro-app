@@ -5,7 +5,10 @@ import Timer from "./components/timer";
 import Settings from "./components/Settings";
 
 function App() {
-  const [timeLeft, setTimeLeft] = useState(25 * 60);
+  const [pomodoroSessionDuration, setPomodoroSessionDuration] = useState(25);
+  const [shortPauseDuration, setShortPauseDuration] = useState(5);
+  const [longPauseDuration, setLongPauseDuration] = useState(15);
+  const [timeLeft, setTimeLeft] = useState(pomodoroSessionDuration * 60);
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const [activeTab, setActiveTab] = useState("pomodoro");
@@ -46,6 +49,9 @@ function App() {
         setNewTimer={setNewTimer}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
+        pomodoroSessionDuration={pomodoroSessionDuration}
+        shortPauseDuration={shortPauseDuration}
+        longPauseDuration={longPauseDuration}
       />
       <Timer
         timeLeft={timeLeft}
@@ -54,7 +60,15 @@ function App() {
         isTimerOn={isTimerOn}
         isTimerPaused={isTimerPaused}
       />
-      <Settings />
+      <Settings
+        pomodoroSessionDuration={pomodoroSessionDuration}
+        shortPauseDuration={shortPauseDuration}
+        longPauseDuration={longPauseDuration}
+        setPomodoroSessionDuration={setPomodoroSessionDuration}
+        setShortPauseDuration={setShortPauseDuration}
+        setLongPauseDuration={setLongPauseDuration}
+        setTimeLeft={setTimeLeft}
+      />
     </>
   );
 }

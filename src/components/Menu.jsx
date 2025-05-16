@@ -1,8 +1,15 @@
-export default function Menu({ setNewTimer, activeTab, setActiveTab }) {
+export default function Menu({
+  setNewTimer,
+  activeTab,
+  setActiveTab,
+  pomodoroSessionDuration,
+  shortPauseDuration,
+  longPauseDuration,
+}) {
   const tabs = [
-    { label: "pomodoro", duration: 25 * 60 },
-    { label: "short break", duration: 5 * 60 },
-    { label: "long break", duration: 10 * 60 },
+    { label: "pomodoro", duration: pomodoroSessionDuration * 60 },
+    { label: "short break", duration: shortPauseDuration * 60 },
+    { label: "long break", duration: longPauseDuration * 60 },
   ];
   const handleClick = (label, duration) => {
     setNewTimer(duration);
