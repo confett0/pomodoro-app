@@ -1,7 +1,8 @@
 import { useState, useRef } from "react";
 import "./App.css";
-import Menu from "./modules/menu";
-import Timer from "./modules/timer";
+import Menu from "./components/menu";
+import Timer from "./components/timer";
+import Settings from "./components/Settings";
 
 function App() {
   const [timeLeft, setTimeLeft] = useState(25 * 60);
@@ -53,6 +54,7 @@ function App() {
         isTimerOn={isTimerOn}
         isTimerPaused={isTimerPaused}
       />
+      <Settings />
     </>
   );
 }
