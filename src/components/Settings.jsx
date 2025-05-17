@@ -35,6 +35,7 @@ export default function Settings({
               name="short-break"
               id="short-break-input"
               value={shortPauseDuration}
+              onChange={(e) => setShortPauseDuration(e.target.value)}
             />
           </label>
           <label htmlFor="long-break-input">
@@ -44,6 +45,7 @@ export default function Settings({
               name="long-break"
               id="long-break-input"
               value={longPauseDuration}
+              onChange={(e) => setLongPauseDuration(e.target.value)}
             />
           </label>
         </div>
