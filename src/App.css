@@ -91,7 +91,6 @@ li.active {
   background-color: #fff;
   border-radius: 1rem;
   color: var(--timer-background-color);
-  height: 490px;
   width: 540px;
   text-align: left;
 }
@@ -106,8 +105,11 @@ li.active {
 }
 
 .settings section {
-  border-bottom: 1px solid var(--settings-light-gray);
   padding: 2.5rem;
+}
+
+.settings section:not(:last-child) {
+  border-bottom: 1px solid var(--settings-light-gray);
 }
 
 .settings h3 {
