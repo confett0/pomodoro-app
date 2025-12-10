@@ -1,3 +1,6 @@
+import SettingsSection from "./SettingsSection";
+import DurationPicker from "./DurationPicker";
+
 export default function Settings({
   pomodoroSessionDuration,
   shortPauseDuration,
@@ -12,44 +15,12 @@ export default function Settings({
       <div className="settings-heading">
         <h2>Settings</h2>
       </div>
-      <section>
-        <h3>Time (minutes)</h3>
-        <div className="timer-inputs-wrap">
-          <label htmlFor="pomodoro-input">
-            pomodoro
-            <input
-              type="number"
-              name="pomodoro"
-              id="pomodoro-input"
-              value={pomodoroSessionDuration}
-              onChange={(e) => {
-                setPomodoroSessionDuration(e.target.value)
-                setTimeLeft(e.target.value)
-              }}
-            />
-          </label>
-          <label htmlFor="short-break-input">
-            short break
-            <input
-              type="number"
-              name="short-break"
-              id="short-break-input"
-              value={shortPauseDuration}
-              onChange={(e) => setShortPauseDuration(e.target.value)}
-            />
-          </label>
-          <label htmlFor="long-break-input">
-            long break
-            <input
-              type="number"
-              name="long-break"
-              id="long-break-input"
-              value={longPauseDuration}
-              onChange={(e) => setLongPauseDuration(e.target.value)}
-            />
-          </label>
-        </div>
-      </section>
+      <SettingsSection title="Time (minutes)">
+        <DurationPicker pomodoroSessionDuration={pomodoroSessionDuration} shortPauseDuration={shortPauseDuration}
+          longPauseDuration={longPauseDuration} setLongPauseDuration={setLongPauseDuration} setPomodoroSessionDuration={setPomodoroSessionDuration} setShortPauseDuration={setShortPauseDuration} setTimeLeft={setTimeLeft} />
+      </SettingsSection>
+      <SettingsSection title="Font"></SettingsSection>
+      <SettingsSection title="Color"></SettingsSection>
     </div>
   );
 }
