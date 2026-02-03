@@ -5,9 +5,10 @@ export default function Menu({
   pomodoroSessionDuration,
   shortPauseDuration,
   longPauseDuration,
+  accentColor
 }) {
   const tabs = [
-    { label: "pomodoro", duration: pomodoroSessionDuration * 60 },
+    { label: "pomodoro", duration: pomodoroSessionDuration * 60 /* seconds */ },
     { label: "short break", duration: shortPauseDuration * 60 },
     { label: "long break", duration: longPauseDuration * 60 },
   ];
@@ -24,6 +25,7 @@ export default function Menu({
             key={label}
             className={activeTab === label ? "active" : ""}
             onClick={() => handleClick(label, duration)}
+            style={{'--accent-color': `${accentColor}`}}
           >
             {label}
           </li>

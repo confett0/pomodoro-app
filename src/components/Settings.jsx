@@ -9,7 +9,9 @@ export default function Settings({
   setPomodoroSessionDuration,
   setShortPauseDuration,
   setLongPauseDuration,
-  setTimeLeft
+  setTimeLeft,
+  accentColor,
+  setAccentColor
 }) {
   return (
     <div className="settings">
@@ -21,7 +23,7 @@ export default function Settings({
           longPauseDuration={longPauseDuration} setLongPauseDuration={setLongPauseDuration} setPomodoroSessionDuration={setPomodoroSessionDuration} setShortPauseDuration={setShortPauseDuration} setTimeLeft={setTimeLeft} />
       </SettingsSection>
       <SettingsSection title="Font"></SettingsSection>
-      <SettingsSection title="Color"><ColorPicker /></SettingsSection>
+      <SettingsSection title="Color"><ColorPicker accentColor={accentColor} setAccentColor={setAccentColor} /></SettingsSection>
     </div>
   );
 }

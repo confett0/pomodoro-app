@@ -12,6 +12,7 @@ function App() {
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const [activeTab, setActiveTab] = useState("pomodoro");
+  const [accentColor, setAccentColor] = useState("#F87070");
   const intervalRef = useRef(null);
 
   const startTimer = () => {
@@ -52,6 +53,7 @@ function App() {
         pomodoroSessionDuration={pomodoroSessionDuration}
         shortPauseDuration={shortPauseDuration}
         longPauseDuration={longPauseDuration}
+        accentColor={accentColor}
       />
       <Timer
         timeLeft={timeLeft}
@@ -68,6 +70,8 @@ function App() {
         setShortPauseDuration={setShortPauseDuration}
         setLongPauseDuration={setLongPauseDuration}
         setTimeLeft={setTimeLeft}
+        accentColor={accentColor}
+        setAccentColor={setAccentColor}
       />
     </>
   );
