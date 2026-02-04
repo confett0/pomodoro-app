@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import "./App.css";
-import Menu from "./components/menu";
-import Timer from "./components/timer";
+import Menu from "./components/Menu";
+import Timer from "./components/Timer";
 import Settings from "./components/Settings";
 
 function App() {
@@ -12,7 +12,10 @@ function App() {
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const [activeTab, setActiveTab] = useState("pomodoro");
-  const [accentColor, setAccentColor] = useState("#F87070");
+  const [theme, setTheme] = useState({
+    accentColor: "#F87070",
+    font: "Kumbh Sans Variable', sans-serif",
+  });
   const intervalRef = useRef(null);
 
   const startTimer = () => {

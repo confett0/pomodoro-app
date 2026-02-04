@@ -1,3 +1,1 @@
-export default function FontPicker() {
-    
-}
+export default function FontPicker() {}

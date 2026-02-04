@@ -1,9 +1,9 @@
 :root {
-    --background-color: #1E213F;
-    --text-color: #D7E0FF;
-    --timer-background-color: #161932;
-    --settings-light-gray: #E3E1E1;
-    --font: 'Kumbh Sans Variable', sans-serif;
+  --background-color: #1e213f;
+  --text-color: #d7e0ff;
+  --timer-background-color: #161932;
+  --settings-light-gray: #e3e1e1;
+  --font: "Kumbh Sans Variable", sans-serif;
 }
 
 *,
@@ -60,13 +60,14 @@ li.active {
   color: var(--background-color);
 }
 
-
 .timer {
   background-color: var(--timer-background-color);
   border-radius: 50%;
   height: min(25rem, 95vw);
   width: min(25rem, 95vw);
-  box-shadow: -50px -50px 50px #272C5A, 50px 50px 50px #121530;
+  box-shadow:
+    -50px -50px 50px #272c5a,
+    50px 50px 50px #121530;
   margin-bottom: 2rem;
 }
 
@@ -130,7 +131,7 @@ li.active {
 }
 
 .timer-inputs-wrap input {
-  background-color: #EFF1FA;
+  background-color: #eff1fa;
   border: none;
   border-radius: 0.5rem;
   font-family: inherit;
@@ -168,15 +169,15 @@ input[type="radio"] {
 }
 
 input[type="radio"]#coral {
-  background-color: #F87070;
+  background-color: #f87070;
 }
 
 input[type="radio"]#turquoise {
-  background-color: #70F3F8;
+  background-color: #70f3f8;
 }
 
 input[type="radio"]#lilac {
-  background-color: #D881F8;
+  background-color: #d881f8;
 }
 
 input[type="radio"]::before {
@@ -195,5 +196,3 @@ input[type="radio"]:hover {
   outline: 1px solid var(--settings-light-gray);
   outline-offset: 3px;
 }
-
-

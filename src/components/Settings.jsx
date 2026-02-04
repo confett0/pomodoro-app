@@ -11,7 +11,7 @@ export default function Settings({
   setLongPauseDuration,
   setTimeLeft,
   accentColor,
-  setAccentColor
+  setAccentColor,
 }) {
   return (
     <div className="settings">
@@ -19,11 +19,23 @@ export default function Settings({
         <h2>Settings</h2>
       </div>
       <SettingsSection title="Time (minutes)">
-        <DurationPicker pomodoroSessionDuration={pomodoroSessionDuration} shortPauseDuration={shortPauseDuration}
-          longPauseDuration={longPauseDuration} setLongPauseDuration={setLongPauseDuration} setPomodoroSessionDuration={setPomodoroSessionDuration} setShortPauseDuration={setShortPauseDuration} setTimeLeft={setTimeLeft} />
+        <DurationPicker
+          pomodoroSessionDuration={pomodoroSessionDuration}
+          shortPauseDuration={shortPauseDuration}
+          longPauseDuration={longPauseDuration}
+          setLongPauseDuration={setLongPauseDuration}
+          setPomodoroSessionDuration={setPomodoroSessionDuration}
+          setShortPauseDuration={setShortPauseDuration}
+          setTimeLeft={setTimeLeft}
+        />
       </SettingsSection>
       <SettingsSection title="Font"></SettingsSection>
-      <SettingsSection title="Color"><ColorPicker accentColor={accentColor} setAccentColor={setAccentColor} /></SettingsSection>
+      <SettingsSection title="Color">
+        <ColorPicker
+          accentColor={accentColor}
+          setAccentColor={setAccentColor}
+        />
+      </SettingsSection>
     </div>
   );
 }
