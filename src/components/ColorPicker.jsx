@@ -8,8 +8,8 @@ export default function ColorPicker({ color, changeTheme }) {
             className="radio-button color-input"
             name="color"
             id="coral"
-            value="#F87070" // use var()
-            checked={color === "#F87070"}
+            value="var(--coral-color)"
+            checked={color === "var(--coral-color)"}
             onChange={changeTheme}
           />
         </label>
@@ -19,8 +19,8 @@ export default function ColorPicker({ color, changeTheme }) {
             className="radio-button color-input"
             name="color"
             id="turquoise"
-            value="#70F3F8"
-            checked={color === "#70F3F8"}
+            value="var(--turquoise-color)"
+            checked={color === "var(--turquoise-color)"}
             onChange={changeTheme}
           />
         </label>
@@ -30,8 +30,8 @@ export default function ColorPicker({ color, changeTheme }) {
             className="radio-button color-input"
             name="color"
             id="lilac"
-            value="#D881F8"
-            checked={color === "#D881F8"}
+            value="var(--lilac-color)"
+            checked={color === "var(--lilac-color)"}
             onChange={changeTheme}
           />
         </label>

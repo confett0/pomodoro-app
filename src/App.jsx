@@ -13,8 +13,8 @@ function App() {
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const [activeTab, setActiveTab] = useState("pomodoro");
   const [theme, setTheme] = useState({
-    color: "#F87070", // change to var()
-    font: "Kumbh Sans Variable, sans-serif",
+    color: "var(--coral-color)",
+    font: "var(--font-sans)",
   });
   const intervalRef = useRef(null);
 

@@ -8,8 +8,8 @@ export default function FontPicker({ font, changeTheme }) {
             className="radio-button font-input"
             name="font"
             id="kumbh-sans"
-            value="'Kumbh Sans', sans-serif" // use var()
-            checked={font === "'Kumbh Sans', sans-serif"}
+            value="var(--font-sans)"
+            checked={font === "var(--font-sans)"}
             onChange={changeTheme}
           />
         </label>
@@ -19,8 +19,8 @@ export default function FontPicker({ font, changeTheme }) {
             className="radio-button font-input"
             name="font"
             id="roboto-slab"
-            value="'Roboto Slab', serif"
-            checked={font === "'Roboto Slab', serif"}
+            value="var(--font-serif)"
+            checked={font === "var(--font-serif)"}
             onChange={changeTheme}
           />
         </label>
@@ -30,8 +30,8 @@ export default function FontPicker({ font, changeTheme }) {
             className="radio-button font-input"
             name="font"
             id="space-mono"
-            value="'Space Mono', monospace"
-            checked={font === "'Space Mono', monospace"}
+            value="var(--font-mono)"
+            checked={font === "var(--font-mono)"}
             onChange={changeTheme}
           />
         </label>
