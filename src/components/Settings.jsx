@@ -1,5 +1,6 @@
 import SettingsSection from "./SettingsSection";
 import DurationPicker from "./DurationPicker";
+import FontPicker from "./FontPicker";
 import ColorPicker from "./ColorPicker";
 
 export default function Settings({
@@ -29,7 +30,9 @@ export default function Settings({
           setTimeLeft={setTimeLeft}
         />
       </SettingsSection>
-      <SettingsSection title="Font"></SettingsSection>
+      <SettingsSection title="Font">
+        <FontPicker font={theme.font} changeTheme={changeTheme} />
+      </SettingsSection>
       <SettingsSection title="Color">
         <ColorPicker color={theme.color} changeTheme={changeTheme} />
       </SettingsSection>
