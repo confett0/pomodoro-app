@@ -1,6 +1,6 @@
-export default function SettingsSection({ title, children }) {
+export default function SettingsSection({ title, children, className }) {
   return (
-    <section>
+    <section className={className}>
       <h3>{title}</h3>
       {children}
     </section>

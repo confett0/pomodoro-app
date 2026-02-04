@@ -19,23 +19,25 @@ export default function Settings({
       <div className="settings-heading">
         <h2>Settings</h2>
       </div>
-      <SettingsSection title="Time (minutes)">
-        <DurationPicker
-          pomodoroSessionDuration={pomodoroSessionDuration}
-          shortPauseDuration={shortPauseDuration}
-          longPauseDuration={longPauseDuration}
-          setLongPauseDuration={setLongPauseDuration}
-          setPomodoroSessionDuration={setPomodoroSessionDuration}
-          setShortPauseDuration={setShortPauseDuration}
-          setTimeLeft={setTimeLeft}
-        />
-      </SettingsSection>
-      <SettingsSection title="Font">
-        <FontPicker font={theme.font} changeTheme={changeTheme} />
-      </SettingsSection>
-      <SettingsSection title="Color">
-        <ColorPicker color={theme.color} changeTheme={changeTheme} />
-      </SettingsSection>
+      <div className="settings-container">
+        <SettingsSection className={"duration-section"} title="Time (minutes)">
+          <DurationPicker
+            pomodoroSessionDuration={pomodoroSessionDuration}
+            shortPauseDuration={shortPauseDuration}
+            longPauseDuration={longPauseDuration}
+            setLongPauseDuration={setLongPauseDuration}
+            setPomodoroSessionDuration={setPomodoroSessionDuration}
+            setShortPauseDuration={setShortPauseDuration}
+            setTimeLeft={setTimeLeft}
+          />
+        </SettingsSection>
+        <SettingsSection title="Font">
+          <FontPicker font={theme.font} changeTheme={changeTheme} />
+        </SettingsSection>
+        <SettingsSection title="Color">
+          <ColorPicker color={theme.color} changeTheme={changeTheme} />
+        </SettingsSection>
+      </div>
     </div>
   );
 }
