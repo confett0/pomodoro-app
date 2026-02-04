@@ -224,21 +224,27 @@ fieldset {
 /* Color */
 
 .radio-button#coral {
-  background-color: #f87070;
+  background-color: var(--coral-color);
 }
 
 .radio-button#turquoise {
-  background-color: #70f3f8;
+  background-color: var(--turquoise-color);
 }
 
 .radio-button#lilac {
-  background-color: #d881f8;
+  background-color: var(--lilac-color);
 }
 
 .radio-button.color-input::before {
-  content: "v";
-  color: black;
+  content: "";
+  background-color: var(--timer-background-color);
+  width: 1rem;
+  height: 1rem;
+  mask-image: url("src/assets/icons/check.svg");
   transform: scale(0);
+  mask-repeat: no-repeat;
+  mask-position: center;
+  mask-size: contain;
 }
 
 .radio-button.color-input:checked::before {
