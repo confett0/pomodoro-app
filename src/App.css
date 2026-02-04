@@ -21,6 +21,10 @@
   margin: 0;
 }
 
+body {
+  font-family: var(--font);
+}
+
 #root {
   background-color: var(--background-color);
   color: var(--text-color);

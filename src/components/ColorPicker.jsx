@@ -8,7 +8,7 @@ export default function ColorPicker({ color, changeTheme }) {
             className="radio-button color-input"
             name="color"
             id="coral"
-            value="#F87070"
+            value="#F87070" // use var()
             checked={color === "#F87070"}
             onChange={changeTheme}
           />

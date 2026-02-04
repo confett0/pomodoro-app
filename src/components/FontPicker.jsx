@@ -8,7 +8,7 @@ export default function FontPicker({ font, changeTheme }) {
             className="radio-button font-input"
             name="font"
             id="kumbh-sans"
-            value="'Kumbh Sans', sans-serif"
+            value="'Kumbh Sans', sans-serif" // use var()
             checked={font === "'Kumbh Sans', sans-serif"}
             onChange={changeTheme}
           />
