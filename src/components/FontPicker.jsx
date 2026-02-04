@@ -5,30 +5,33 @@ export default function FontPicker({ font, changeTheme }) {
         <label>
           <input
             type="radio"
+            className="radio-button font-input"
             name="font"
             id="kumbh-sans"
-            value="Kumbh Sans, sans-serif"
-            checked={font === "Kumbh Sans, sans-serif"}
+            value="'Kumbh Sans', sans-serif"
+            checked={font === "'Kumbh Sans', sans-serif"}
             onChange={changeTheme}
           />
         </label>
         <label>
           <input
             type="radio"
+            className="radio-button font-input"
             name="font"
             id="roboto-slab"
-            value="Roboto Slab, serif"
-            checked={font === "Roboto Slab, serif"}
+            value="'Roboto Slab', serif"
+            checked={font === "'Roboto Slab', serif"}
             onChange={changeTheme}
           />
         </label>
         <label>
           <input
             type="radio"
+            className="radio-button font-input"
             name="font"
             id="space-mono"
-            value="Space Mono, monospace"
-            checked={font === "Space Mono, monospace"}
+            value="'Space Mono', monospace"
+            checked={font === "'Space Mono', monospace"}
             onChange={changeTheme}
           />
         </label>

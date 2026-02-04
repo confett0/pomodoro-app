@@ -5,6 +5,7 @@ export default function ColorPicker({ color, changeTheme }) {
         <label>
           <input
             type="radio"
+            className="radio-button color-input"
             name="color"
             id="coral"
             value="#F87070"
@@ -15,6 +16,7 @@ export default function ColorPicker({ color, changeTheme }) {
         <label>
           <input
             type="radio"
+            className="radio-button color-input"
             name="color"
             id="turquoise"
             value="#70F3F8"
@@ -25,6 +27,7 @@ export default function ColorPicker({ color, changeTheme }) {
         <label>
           <input
             type="radio"
+            className="radio-button color-input"
             name="color"
             id="lilac"
             value="#D881F8"

@@ -3,6 +3,14 @@
   --text-color: #d7e0ff;
   --timer-background-color: #161932;
   --settings-light-gray: #e3e1e1;
+  --coral-color: #f87070;
+  --turquoise-color: #70f3f8;
+  --lilac-color: #d881f8;
+  --font-sans: 'Kumbh Sans', sans-serif;
+  --font-serif: 'Roboto Slab', serif;
+  --font-mono: 'Space Mono', monospace;
+  --font: var(--font-sans);
+  --accent-color: var(var(--coral-color));
 }
 
 *,
@@ -86,6 +94,8 @@ li.active {
   text-transform: uppercase;
 }
 
+/* Settings */
+
 .settings {
   background-color: #fff;
   border-radius: 1rem;
@@ -118,6 +128,8 @@ li.active {
   text-transform: uppercase;
 }
 
+/* Duration picker */
+
 .timer-inputs-wrap {
   display: flex;
   justify-content: space-between;
@@ -141,7 +153,7 @@ li.active {
   width: 140px;
 }
 
-/* Color Picker */
+/* Color and font picker */
 
 fieldset {
   border: none;
@@ -149,13 +161,10 @@ fieldset {
   gap: 1rem;
 }
 
-input[type="radio"] {
-  /* Add if not using autoprefixer */
+.radio-button {
   -webkit-appearance: none;
   appearance: none;
-  /* For iOS < 15 to remove gradient background */
   background-color: #fff;
-  /* Not removed via appearance */
   margin: 0;
   font: inherit;
   color: currentColor;
@@ -167,31 +176,67 @@ input[type="radio"] {
   place-content: center;
 }
 
-input[type="radio"]#coral {
-  background-color: #f87070;
-}
-
-input[type="radio"]#turquoise {
-  background-color: #70f3f8;
-}
-
-input[type="radio"]#lilac {
-  background-color: #d881f8;
-}
-
-input[type="radio"]::before {
-  content: "v";
-  color: black;
+.radio-button::before {
   border-radius: 50%;
-  transform: scale(0);
   transition: 120ms transform ease-in-out;
 }
 
-input[type="radio"]:checked::before {
-  transform: scale(1);
-}
-
-input[type="radio"]:hover {
+.radio-button:hover {
   outline: 1px solid var(--settings-light-gray);
   outline-offset: 3px;
+}
+
+/* Font */
+
+.radio-button.font-input {
+  background-color: #EFF1FA;
+}
+
+.radio-button.radio-button.font-input::before {
+  content: "Aa";
+  color: #535353;
+}
+
+.radio-button.font-input:checked {
+  background-color: var(--timer-background-color);
+}
+
+.radio-button.font-input:checked::before {
+  color: #fff;
+}
+
+.radio-button.font-input#kumbh-sans {
+  font-family: var(--font-sans);
+}
+
+.radio-button.font-input#roboto-slab {
+  font-family: var(--font-serif);
+}
+
+.radio-button.font-input#space-mono {
+  font-family: var(--font-mono);
+}
+
+/* Color */
+
+.radio-button#coral {
+  background-color: #f87070;
+}
+
+.radio-button#turquoise {
+  background-color: #70f3f8;
+}
+
+.radio-button#lilac {
+  background-color: #d881f8;
+}
+
+.radio-button.color-input::before {
+  content: "v";
+  color: black;
+  transform: scale(0);
+}
+
+.radio-button.color-input:checked::before {
+  transform: scale(1);
 }
