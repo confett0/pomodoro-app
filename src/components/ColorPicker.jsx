@@ -1,6 +1,4 @@
-export default function ColorPicker({ accentColor, setAccentColor }) {
-  const handleChange = (e) => setAccentColor(e.target.value);
-
+export default function ColorPicker({ color, changeTheme }) {
   return (
     <div className="color-picker">
       <fieldset>
@@ -10,8 +8,8 @@ export default function ColorPicker({ accentColor, setAccentColor }) {
             name="color"
             id="coral"
             value="#F87070"
-            checked={accentColor === "#F87070"}
-            onChange={handleChange}
+            checked={color === "#F87070"}
+            onChange={changeTheme}
           />
         </label>
         <label>
@@ -20,8 +18,8 @@ export default function ColorPicker({ accentColor, setAccentColor }) {
             name="color"
             id="turquoise"
             value="#70F3F8"
-            checked={accentColor === "#70F3F8"}
-            onChange={handleChange}
+            checked={color === "#70F3F8"}
+            onChange={changeTheme}
           />
         </label>
         <label>
@@ -30,8 +28,8 @@ export default function ColorPicker({ accentColor, setAccentColor }) {
             name="color"
             id="lilac"
             value="#D881F8"
-            checked={accentColor === "#D881F8"}
-            onChange={handleChange}
+            checked={color === "#D881F8"}
+            onChange={changeTheme}
           />
         </label>
       </fieldset>

@@ -10,8 +10,8 @@ export default function Settings({
   setShortPauseDuration,
   setLongPauseDuration,
   setTimeLeft,
-  accentColor,
-  setAccentColor,
+  theme,
+  changeTheme,
 }) {
   return (
     <div className="settings">
@@ -31,10 +31,7 @@ export default function Settings({
       </SettingsSection>
       <SettingsSection title="Font"></SettingsSection>
       <SettingsSection title="Color">
-        <ColorPicker
-          accentColor={accentColor}
-          setAccentColor={setAccentColor}
-        />
+        <ColorPicker color={theme.color} changeTheme={changeTheme} />
       </SettingsSection>
     </div>
   );

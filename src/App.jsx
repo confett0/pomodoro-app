@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./App.css";
 import Menu from "./components/Menu";
 import Timer from "./components/Timer";
@@ -13,10 +13,15 @@ function App() {
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const [activeTab, setActiveTab] = useState("pomodoro");
   const [theme, setTheme] = useState({
-    accentColor: "#F87070",
-    font: "Kumbh Sans Variable', sans-serif",
+    color: "#F87070",
+    font: "Kumbh Sans Variable, sans-serif",
   });
   const intervalRef = useRef(null);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty("--font", theme.font);
+    document.documentElement.style.setProperty("--accent-color", theme.color);
+  }, [theme]);
 
   const startTimer = () => {
     setIsTimerOn(true);
@@ -46,6 +51,16 @@ function App() {
     setTimeLeft(newTimeLeft);
   };
 
+  const changeTheme = (e) => {
+    const { name, value } = e.target;
+    setTheme((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  };
+
   return (
     <>
       <h1>pomodoro</h1>
@@ -56,7 +71,6 @@ function App() {
         pomodoroSessionDuration={pomodoroSessionDuration}
         shortPauseDuration={shortPauseDuration}
         longPauseDuration={longPauseDuration}
-        accentColor={accentColor}
       />
       <Timer
         timeLeft={timeLeft}
@@ -73,8 +87,8 @@ function App() {
         setShortPauseDuration={setShortPauseDuration}
         setLongPauseDuration={setLongPauseDuration}
         setTimeLeft={setTimeLeft}
-        accentColor={accentColor}
-        setAccentColor={setAccentColor}
+        theme={theme}
+        changeTheme={changeTheme}
       />
     </>
   );
