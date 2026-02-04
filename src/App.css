@@ -167,6 +167,7 @@ li.active {
 
 .timer-inputs-wrap {
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
 }
 
