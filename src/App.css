@@ -37,6 +37,17 @@ body {
   text-align: center;
 }
 
+button {
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 2rem;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem 3rem;
+}
+
 nav {
   background-color: var(--timer-background-color);
   border-radius: 2rem;
@@ -106,6 +117,14 @@ li.active {
   color: var(--timer-background-color);
   width: 540px;
   text-align: left;
+  position: relative;
+}
+
+.settings button {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .settings-heading {
@@ -118,7 +137,7 @@ li.active {
 }
 
 .settings-container {
-  padding: 0 3rem;
+  padding: 0 3rem 2rem;
 }
 
 .settings section {
