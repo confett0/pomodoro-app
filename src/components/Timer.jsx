@@ -1,3 +1,5 @@
+import CircularProgressBar from "./CircularProgressBar";
+
 export default function Timer({
   timeLeft,
   startTimer,
@@ -16,6 +18,7 @@ export default function Timer({
 
   return (
     <div className="timer">
+      <CircularProgressBar />
       <p className="time-left">
         <span>{String(Math.floor(timeLeft / 60)).padStart(2, "0")}</span>
         <span>:</span>

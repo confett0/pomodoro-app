@@ -86,12 +86,20 @@ li.active {
     -50px -50px 50px #272c5a,
     50px 50px 50px #121530;
   margin-bottom: 2rem;
+  position: relative;
+}
+
+.progress-bar {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
 }
 
 .time-left {
   font-size: 6rem;
   font-weight: bold;
   margin-top: 35%;
+  position: relative;
 }
 
 .timer-button {
