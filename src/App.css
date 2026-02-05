@@ -101,6 +101,10 @@ li.active {
   text-transform: uppercase;
 }
 
+.timer-button:hover {
+  color: var(--accent-color);
+}
+
 /* Settings button */
 
 .settings-button {

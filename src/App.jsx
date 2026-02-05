@@ -69,7 +69,7 @@ function App() {
 
   return (
     <>
-      <h1>pomodoro</h1>
+      <img src="src/assets/logo.svg" alt="Pomodoro App logo" />
       <Menu
         setNewTimer={setNewTimer}
         activeTab={activeTab}
