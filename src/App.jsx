@@ -11,6 +11,7 @@ function App() {
   const [shortPauseDuration, setShortPauseDuration] = useState(5);
   const [longPauseDuration, setLongPauseDuration] = useState(15);
   const [timeLeft, setTimeLeft] = useState(pomodoroSessionDuration * 60);
+  const [totalTime, setTotalTime] = useState(25);
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const [activeTab, setActiveTab] = useState("pomodoro");
@@ -52,6 +53,7 @@ function App() {
     setIsTimerOn(false);
     setIsTimerPaused(false);
     setTimeLeft(newTimeLeft);
+    setTotalTime(newTimeLeft);
   };
 
   const changeTheme = (e) => {
@@ -80,6 +82,7 @@ function App() {
       />
       <Timer
         timeLeft={timeLeft}
+        totalTime={totalTime}
         startTimer={startTimer}
         pauseTimer={pauseTimer}
         isTimerOn={isTimerOn}

@@ -1,7 +1,7 @@
-export default function CircularProgressBar() {
+export default function CircularProgressBar({ timeLeft, totalTime }) {
   const r = 180;
   const circ = 2 * Math.PI * r;
-  let progress = 0.25;
+  let progress = 1 - timeLeft / totalTime;
   return (
     <svg className="progress-bar" width="400" height="400">
       <circle

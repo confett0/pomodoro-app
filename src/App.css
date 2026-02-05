@@ -92,7 +92,6 @@ li.active {
 .progress-bar {
   position: absolute;
   inset: 0;
-  z-index: 3;
 }
 
 .time-left {
@@ -107,6 +106,8 @@ li.active {
   color: var(--text-color);
   letter-spacing: 0.7rem;
   text-transform: uppercase;
+  position: relative;
+  z-index: 3;
 }
 
 .timer-button:hover {

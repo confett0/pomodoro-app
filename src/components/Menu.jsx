@@ -12,7 +12,7 @@ export default function Menu({
     { label: "long break", duration: longPauseDuration * 60 },
   ];
   const handleClick = (label, duration) => {
-    setNewTimer(duration);
+    setNewTimer(duration); // move setNewTimerLogic to start timer button
     setActiveTab(label);
   };
 
