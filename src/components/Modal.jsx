@@ -3,9 +3,11 @@ export default function Modal({ children, isOpen, onClose }) {
     return;
   }
   return (
-    <div className="modal">
-      {children}
-      <button onClick={onClose}>Close</button>
+    <div className="modal-overlay" onClick={onClose}>
+      <div className="modal" onClick={(e) => e.stopPropagation()}>
+        {children}
+        <button onClick={onClose}>Close</button>
+      </div>
     </div>
   );
 }

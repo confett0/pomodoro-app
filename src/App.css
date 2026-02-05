@@ -55,7 +55,7 @@ nav {
   margin: 3rem auto;
   padding: 0.3rem;
   width: min(20rem, 95%);
-  z-index: 2;
+  z-index: 0;
 }
 
 nav ul {
@@ -109,6 +109,29 @@ li.active {
   text-transform: uppercase;
 }
 
+/* Modal */
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal {
+  position: relative;
+}
+
+.modal button {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
 /* Settings */
 
 .settings {
@@ -118,13 +141,6 @@ li.active {
   width: 540px;
   text-align: left;
   position: relative;
-}
-
-.settings button {
-  position: absolute;
-  bottom: -1.5rem;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .settings-heading {
