@@ -4,6 +4,7 @@ import Menu from "./components/Menu";
 import Timer from "./components/Timer";
 import Modal from "./components/Modal";
 import Settings from "./components/Settings";
+import SettingsButton from "./components/SettingsButton";
 
 function App() {
   const [pomodoroSessionDuration, setPomodoroSessionDuration] = useState(25);
@@ -84,7 +85,7 @@ function App() {
         isTimerOn={isTimerOn}
         isTimerPaused={isTimerPaused}
       />
-      <button onClick={openModal}>Open modal</button>
+      <SettingsButton openModal={openModal} />
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <Settings
           pomodoroSessionDuration={pomodoroSessionDuration}

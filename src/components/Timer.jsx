@@ -21,7 +21,9 @@ export default function Timer({
         <span>:</span>
         <span>{String(timeLeft % 60).padStart(2, "0")}</span>
       </p>
-      <button onClick={handleClick}>{buttonText}</button>
+      <button className="timer-button" onClick={handleClick}>
+        {buttonText}
+      </button>
     </div>
   );
 }

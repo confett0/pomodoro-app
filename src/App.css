@@ -25,6 +25,12 @@ body {
   font-family: var(--font);
 }
 
+button {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
 #root {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -35,17 +41,6 @@ body {
   padding: 2rem 0;
   min-height: 100vh;
   text-align: center;
-}
-
-button {
-  background-color: var(--accent-color);
-  border: none;
-  border-radius: 2rem;
-  color: #fff;
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: bold;
-  padding: 1rem 3rem;
 }
 
 nav {
@@ -99,14 +94,25 @@ li.active {
   margin-top: 35%;
 }
 
-.timer button {
+.timer-button {
   background-color: transparent;
-  border: none;
   color: var(--text-color);
-  cursor: pointer;
-  font-family: inherit;
   letter-spacing: 0.7rem;
   text-transform: uppercase;
+}
+
+/* Settings button */
+
+.settings-button {
+  background-color: transparent;
+  color: var(--text-color);
+  margin-top: 3rem;
+  width: 1.7rem;
+  height: 1.7rem;
+}
+
+.settings-button svg g:hover {
+  opacity: 1;
 }
 
 /* Modal */
@@ -125,7 +131,15 @@ li.active {
   position: relative;
 }
 
-.modal button {
+.modal-button {
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 2rem;
+  color: #fff;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 1rem 3rem;
   position: absolute;
   bottom: -1.5rem;
   left: 50%;
