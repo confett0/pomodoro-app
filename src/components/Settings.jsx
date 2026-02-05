@@ -38,7 +38,6 @@ export default function Settings({
           <ColorPicker color={theme.color} changeTheme={changeTheme} />
         </SettingsSection>
       </div>
-      <button>Apply</button>
     </div>
   );
 }

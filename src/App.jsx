@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import "./App.css";
 import Menu from "./components/Menu";
 import Timer from "./components/Timer";
+import Modal from "./components/Modal";
 import Settings from "./components/Settings";
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const [activeTab, setActiveTab] = useState("pomodoro");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [theme, setTheme] = useState({
     color: "var(--coral-color)",
     font: "var(--font-sans)",
@@ -61,6 +63,9 @@ function App() {
     });
   };
 
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
+
   return (
     <>
       <h1>pomodoro</h1>
@@ -79,17 +84,20 @@ function App() {
         isTimerOn={isTimerOn}
         isTimerPaused={isTimerPaused}
       />
-      <Settings
-        pomodoroSessionDuration={pomodoroSessionDuration}
-        shortPauseDuration={shortPauseDuration}
-        longPauseDuration={longPauseDuration}
-        setPomodoroSessionDuration={setPomodoroSessionDuration}
-        setShortPauseDuration={setShortPauseDuration}
-        setLongPauseDuration={setLongPauseDuration}
-        setTimeLeft={setTimeLeft}
-        theme={theme}
-        changeTheme={changeTheme}
-      />
+      <button onClick={openModal}>Open modal</button>
+      <Modal isOpen={isModalOpen} onClose={closeModal}>
+        <Settings
+          pomodoroSessionDuration={pomodoroSessionDuration}
+          shortPauseDuration={shortPauseDuration}
+          longPauseDuration={longPauseDuration}
+          setPomodoroSessionDuration={setPomodoroSessionDuration}
+          setShortPauseDuration={setShortPauseDuration}
+          setLongPauseDuration={setLongPauseDuration}
+          setTimeLeft={setTimeLeft}
+          theme={theme}
+          changeTheme={changeTheme}
+        />
+      </Modal>
     </>
   );
 }
