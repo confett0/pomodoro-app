@@ -6,12 +6,22 @@ import Modal from "./components/Modal";
 import Settings from "./components/Settings";
 import SettingsButton from "./components/SettingsButton";
 
+// check timer display
+// restart function
+// all this * 60 and / 60 is confusing
+// test
+// settings resizing for mobile
+// check responsivity and design
+
 function App() {
   const [pomodoroSessionLength, setPomodoroSessionLength] = useState(
     25 * 60 /* seconds */,
   );
   const [shortPauseLength, setShortPauseLength] = useState(5 * 60);
   const [longPauseLength, setLongPauseLength] = useState(15 * 60);
+  const [selectedDuration, setSelectedDuration] = useState(
+    pomodoroSessionLength / 60,
+  ); // to show on timer display
   const [timeLeft, setTimeLeft] = useState(pomodoroSessionLength);
   const [totalTime, setTotalTime] = useState(pomodoroSessionLength);
   const [isTimerOn, setIsTimerOn] = useState(false);
@@ -22,11 +32,11 @@ function App() {
     color: "var(--coral-color)",
     font: "var(--font-sans)",
   });
-  const menuTabs = [
-    { label: "pomodoro", length: pomodoroSessionLength },
-    { label: "short break", length: shortPauseLength },
-    { label: "long break", length: longPauseLength },
-  ];
+  const timerLengths = {
+    pomodoro: pomodoroSessionLength,
+    "short break": shortPauseLength,
+    "long break": longPauseLength,
+  };
   const intervalRef = useRef(null);
 
   useEffect(() => {
@@ -37,9 +47,14 @@ function App() {
   const startTimer = () => {
     if (intervalRef.current) return;
 
+    if (!isTimerPaused) {
+      const totalTime = timerLengths[activeTab];
+      setNewTimer(totalTime);
+    }
+
     setIsTimerOn(true);
     setIsTimerPaused(false);
-    // setNewTimer
+
     intervalRef.current = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
@@ -78,6 +93,11 @@ function App() {
     });
   };
 
+  const handleTabChange = (tab) => {
+    setActiveTab(tab);
+    setSelectedDuration(timerLengths[tab] / 60);
+  };
+
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -85,12 +105,12 @@ function App() {
     <>
       <img src="src/assets/logo.svg" alt="Pomodoro App logo" />
       <Menu
-        tabs={menuTabs}
-        setNewTimer={setNewTimer}
+        tabs={Object.keys(timerLengths)}
         activeTab={activeTab}
-        setActiveTab={setActiveTab}
+        handleTabChange={handleTabChange}
       />
       <Timer
+        selectedDuration={selectedDuration}
         timeLeft={timeLeft}
         totalTime={totalTime}
         startTimer={startTimer}
