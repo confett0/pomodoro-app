@@ -75,6 +75,7 @@ nav li {
   opacity: 0.4;
   height: 100%;
   width: 32%;
+  transition: 300ms ease-in-out;
 }
 
 nav li:hover {
@@ -137,6 +138,7 @@ nav li.active {
   text-transform: uppercase;
   position: relative;
   margin-top: 1rem;
+  transition: 300ms ease-in-out;
   z-index: 3;
 }
 
@@ -152,6 +154,10 @@ nav li.active {
   margin-top: 4rem;
   width: 1.7rem;
   height: 1.7rem;
+}
+
+.settings-button svg g {
+  transition: 300ms ease-in-out;
 }
 
 .settings-button svg g:hover {
