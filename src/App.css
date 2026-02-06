@@ -25,12 +25,6 @@ body {
   font-family: var(--font);
 }
 
-button {
-  border: none;
-  cursor: pointer;
-  font-family: inherit;
-}
-
 #root {
   background-color: var(--background-color);
   color: var(--text-color);
@@ -43,14 +37,23 @@ button {
   text-align: center;
 }
 
+button {
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Menu */
+
 nav {
   background-color: var(--timer-background-color);
   border-radius: 2rem;
   height: 3.5rem;
-  margin: 3rem auto;
+  margin: 3rem auto 4rem;
   padding: 0.3rem;
+  position: relative;
   width: min(20rem, 95%);
-  z-index: 0;
+  z-index: 1;
 }
 
 nav ul {
@@ -68,13 +71,20 @@ nav li {
   display: flex;
   align-items: center;
   justify-content: center;
+  font-weight: bold;
+  opacity: 0.4;
   height: 100%;
   width: 32%;
 }
 
-li.active {
+nav li:hover {
+  opacity: 1;
+}
+
+nav li.active {
   background-color: var(--accent-color);
   color: var(--background-color);
+  opacity: 1;
 }
 
 /* Timer */
@@ -102,9 +112,10 @@ li.active {
   border-radius: 50%;
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   height: min(25rem, 95vw);
   width: min(25rem, 95vw);
-  margin-bottom: 2rem;
+  padding-bottom: 7rem;
   position: relative;
 }
 
@@ -116,7 +127,6 @@ li.active {
 .time-left {
   font-size: 6rem;
   font-weight: bold;
-  margin-top: 35%;
   position: relative;
 }
 
@@ -126,6 +136,7 @@ li.active {
   letter-spacing: 0.7rem;
   text-transform: uppercase;
   position: relative;
+  margin-top: 1rem;
   z-index: 3;
 }
 
@@ -138,7 +149,7 @@ li.active {
 .settings-button {
   background-color: transparent;
   color: var(--text-color);
-  margin-top: 3rem;
+  margin-top: 4rem;
   width: 1.7rem;
   height: 1.7rem;
 }
