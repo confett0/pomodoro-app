@@ -22,6 +22,11 @@ function App() {
     color: "var(--coral-color)",
     font: "var(--font-sans)",
   });
+  const menuTabs = [
+    { label: "pomodoro", length: pomodoroSessionLength },
+    { label: "short break", length: shortPauseLength },
+    { label: "long break", length: longPauseLength },
+  ];
   const intervalRef = useRef(null);
 
   useEffect(() => {
@@ -79,12 +84,10 @@ function App() {
     <>
       <img src="src/assets/logo.svg" alt="Pomodoro App logo" />
       <Menu
+        tabs={menuTabs}
         setNewTimer={setNewTimer}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
-        pomodoroSessionLength={pomodoroSessionLength}
-        shortPauseLength={shortPauseLength}
-        longPauseLength={longPauseLength}
       />
       <Timer
         timeLeft={timeLeft}
