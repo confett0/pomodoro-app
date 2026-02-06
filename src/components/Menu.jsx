@@ -7,9 +7,9 @@ export default function Menu({
   longPauseDuration,
 }) {
   const tabs = [
-    { label: "pomodoro", duration: pomodoroSessionDuration * 60 /* seconds */ },
-    { label: "short break", duration: shortPauseDuration * 60 },
-    { label: "long break", duration: longPauseDuration * 60 },
+    { label: "pomodoro", duration: pomodoroSessionDuration },
+    { label: "short break", duration: shortPauseDuration },
+    { label: "long break", duration: longPauseDuration },
   ];
   const handleClick = (label, duration) => {
     setNewTimer(duration); // move setNewTimerLogic to start timer button

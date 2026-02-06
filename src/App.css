@@ -77,6 +77,8 @@ li.active {
   color: var(--background-color);
 }
 
+/* Timer */
+
 .timer {
   background-color: var(--timer-background-color);
   border-radius: 50%;
@@ -88,6 +90,14 @@ li.active {
   margin-bottom: 2rem;
   position: relative;
 }
+
+/*.timer::before {
+  content: "";
+  background-color: #f87070;
+  border-radius: 50%;
+  width: 26rem;
+  height: 26rem;
+} */
 
 .progress-bar {
   position: absolute;

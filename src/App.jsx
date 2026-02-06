@@ -7,11 +7,13 @@ import Settings from "./components/Settings";
 import SettingsButton from "./components/SettingsButton";
 
 function App() {
-  const [pomodoroSessionDuration, setPomodoroSessionDuration] = useState(25);
-  const [shortPauseDuration, setShortPauseDuration] = useState(5);
-  const [longPauseDuration, setLongPauseDuration] = useState(15);
-  const [timeLeft, setTimeLeft] = useState(pomodoroSessionDuration * 60);
-  const [totalTime, setTotalTime] = useState(25);
+  const [pomodoroSessionDuration, setPomodoroSessionDuration] = useState(
+    25 * 60 /* seconds */,
+  );
+  const [shortPauseDuration, setShortPauseDuration] = useState(5 * 60);
+  const [longPauseDuration, setLongPauseDuration] = useState(15 * 60);
+  const [timeLeft, setTimeLeft] = useState(pomodoroSessionDuration);
+  const [totalTime, setTotalTime] = useState(pomodoroSessionDuration);
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const [activeTab, setActiveTab] = useState("pomodoro");
