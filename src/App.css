@@ -95,8 +95,8 @@ nav li.active {
   box-shadow:
     -50px -50px 50px #272c5a,
     50px 50px 50px #121530;
-  height: min(25rem, 95vw);
-  width: min(25rem, 95vw);
+  height: min(25rem, 80vw);
+  width: min(25rem, 80vw);
   position: relative;
 }
 
@@ -111,8 +111,8 @@ nav li.active {
 .timer {
   background-color: var(--timer-background-color);
   border-radius: 50%;
-  height: min(25rem, 95vw);
-  width: min(25rem, 95vw);
+  height: min(25rem, 80vw);
+  width: min(25rem, 80vw);
   position: relative;
 }
 
@@ -371,4 +371,12 @@ fieldset {
 
 .radio-button.color-input:checked::before {
   transform: scale(1);
+}
+
+/* Mobile */
+
+@media (max-width: 500px) {
+  .time-left {
+    font-size: 5rem;
+  }
 }

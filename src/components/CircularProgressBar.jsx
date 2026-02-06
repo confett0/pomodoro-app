@@ -3,7 +3,7 @@ export default function CircularProgressBar({ timeLeft, totalTime }) {
   const circ = 2 * Math.PI * r;
   let progress = 1 - timeLeft / totalTime;
   return (
-    <svg className="progress-bar" width="400" height="400">
+    <svg className="progress-bar" viewBox="0 0 400 400">
       <circle
         cx="200"
         cy="200"
@@ -23,7 +23,7 @@ export default function CircularProgressBar({ timeLeft, totalTime }) {
         strokeDashoffset={circ * progress} // progress = 0 to 1
         strokeLinecap="round"
         transform="rotate(-90 200 200)" // start from top
-        style={{ transition: "stroke-dashoffset 0.5s linear" }}
+        style={{ transition: "stroke-dashoffset 1s linear" }}
       />
     </svg>
   );
