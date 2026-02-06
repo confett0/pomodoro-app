@@ -39,6 +39,7 @@ function App() {
 
     setIsTimerOn(true);
     setIsTimerPaused(false);
+    // setNewTimer
     intervalRef.current = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
