@@ -30,17 +30,20 @@ function App() {
   }, [theme]);
 
   const startTimer = () => {
+    if (intervalRef.current) return;
+
     setIsTimerOn(true);
     setIsTimerPaused(false);
     intervalRef.current = setInterval(() => {
-      setTimeLeft((prevTimeLeft) => {
-        if (prevTimeLeft === 0) {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
           clearInterval(intervalRef.current);
           intervalRef.current = null;
           setIsTimerOn(false);
+          // add restart logic
           return 0;
         }
-        return prevTimeLeft - 1;
+        return prev - 1;
       });
     }, 1000);
   };
@@ -48,6 +51,7 @@ function App() {
   const pauseTimer = () => {
     setIsTimerPaused(true);
     clearInterval(intervalRef.current);
+    intervalRef.current = null;
   };
 
   const setNewTimer = (newTimeLeft) => {

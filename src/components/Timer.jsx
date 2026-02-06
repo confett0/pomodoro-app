@@ -1,6 +1,7 @@
 import CircularProgressBar from "./CircularProgressBar";
 
 export default function Timer({
+  // valuta estrazione componenti TimerDisplay e TimerButton
   timeLeft,
   totalTime,
   startTimer,
@@ -10,11 +11,7 @@ export default function Timer({
 }) {
   const buttonText = !isTimerOn ? "Start" : isTimerPaused ? "Resume" : "Pause";
   const handleClick = () => {
-    if (!isTimerPaused && isTimerOn) {
-      pauseTimer();
-    } else {
-      startTimer();
-    }
+    isTimerOn && !isTimerPaused ? pauseTimer() : startTimer();
   };
 
   return (
