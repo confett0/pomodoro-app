@@ -1,11 +1,10 @@
-export default function DurationPicker({
-  pomodoroSessionDuration,
-  shortPauseDuration,
-  longPauseDuration,
-  setPomodoroSessionDuration,
-  setShortPauseDuration,
-  setLongPauseDuration,
-  setTimeLeft,
+export default function SessionLengthPicker({
+  pomodoroSessionLength,
+  shortPauseLength,
+  longPauseLength,
+  setPomodoroSessionLength,
+  setShortPauseLength,
+  setLongPauseLength,
 }) {
   return (
     <div className="timer-inputs-wrap">
@@ -15,10 +14,9 @@ export default function DurationPicker({
           type="number"
           name="pomodoro"
           id="pomodoro-input"
-          value={pomodoroSessionDuration}
+          value={pomodoroSessionLength / 60}
           onChange={(e) => {
-            setPomodoroSessionDuration(e.target.value);
-            setTimeLeft(e.target.value);
+            setPomodoroSessionLength(e.target.value * 60);
           }}
         />
       </label>
@@ -28,8 +26,8 @@ export default function DurationPicker({
           type="number"
           name="short-break"
           id="short-break-input"
-          value={shortPauseDuration}
-          onChange={(e) => setShortPauseDuration(e.target.value)}
+          value={shortPauseLength / 60}
+          onChange={(e) => setShortPauseLength(e.target.value * 60)}
         />
       </label>
       <label htmlFor="long-break-input">
@@ -38,8 +36,8 @@ export default function DurationPicker({
           type="number"
           name="long-break"
           id="long-break-input"
-          value={longPauseDuration}
-          onChange={(e) => setLongPauseDuration(e.target.value)}
+          value={longPauseLength / 60}
+          onChange={(e) => setLongPauseLength(e.target.value * 60)}
         />
       </label>
     </div>

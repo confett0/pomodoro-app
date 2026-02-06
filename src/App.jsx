@@ -7,13 +7,13 @@ import Settings from "./components/Settings";
 import SettingsButton from "./components/SettingsButton";
 
 function App() {
-  const [pomodoroSessionDuration, setPomodoroSessionDuration] = useState(
+  const [pomodoroSessionLength, setPomodoroSessionLength] = useState(
     25 * 60 /* seconds */,
   );
-  const [shortPauseDuration, setShortPauseDuration] = useState(5 * 60);
-  const [longPauseDuration, setLongPauseDuration] = useState(15 * 60);
-  const [timeLeft, setTimeLeft] = useState(pomodoroSessionDuration);
-  const [totalTime, setTotalTime] = useState(pomodoroSessionDuration);
+  const [shortPauseLength, setShortPauseLength] = useState(5 * 60);
+  const [longPauseLength, setLongPauseLength] = useState(15 * 60);
+  const [timeLeft, setTimeLeft] = useState(pomodoroSessionLength);
+  const [totalTime, setTotalTime] = useState(pomodoroSessionLength);
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const [activeTab, setActiveTab] = useState("pomodoro");
@@ -78,9 +78,9 @@ function App() {
         setNewTimer={setNewTimer}
         activeTab={activeTab}
         setActiveTab={setActiveTab}
-        pomodoroSessionDuration={pomodoroSessionDuration}
-        shortPauseDuration={shortPauseDuration}
-        longPauseDuration={longPauseDuration}
+        pomodoroSessionLength={pomodoroSessionLength}
+        shortPauseLength={shortPauseLength}
+        longPauseLength={longPauseLength}
       />
       <Timer
         timeLeft={timeLeft}
@@ -93,13 +93,12 @@ function App() {
       <SettingsButton openModal={openModal} />
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <Settings
-          pomodoroSessionDuration={pomodoroSessionDuration}
-          shortPauseDuration={shortPauseDuration}
-          longPauseDuration={longPauseDuration}
-          setPomodoroSessionDuration={setPomodoroSessionDuration}
-          setShortPauseDuration={setShortPauseDuration}
-          setLongPauseDuration={setLongPauseDuration}
-          setTimeLeft={setTimeLeft}
+          pomodoroSessionLength={pomodoroSessionLength}
+          shortPauseLength={shortPauseLength}
+          longPauseLength={longPauseLength}
+          setPomodoroSessionLength={setPomodoroSessionLength}
+          setShortPauseLength={setShortPauseLength}
+          setLongPauseLength={setLongPauseLength}
           theme={theme}
           changeTheme={changeTheme}
         />

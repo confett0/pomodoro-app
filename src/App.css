@@ -200,7 +200,7 @@ li.active {
   padding: 2rem 0;
 }
 
-.settings section.duration-section {
+.settings section.length-section {
   flex-direction: column;
   gap: 1.5rem;
   align-items: flex-start;
@@ -216,7 +216,7 @@ li.active {
   text-transform: uppercase;
 }
 
-/* Duration picker */
+/* Session length picker */
 
 .timer-inputs-wrap {
   display: flex;

@@ -1,16 +1,15 @@
 import SettingsSection from "./SettingsSection";
-import DurationPicker from "./DurationPicker";
+import SessionLengthPicker from "./SessionLengthPicker";
 import FontPicker from "./FontPicker";
 import ColorPicker from "./ColorPicker";
 
 export default function Settings({
-  pomodoroSessionDuration,
-  shortPauseDuration,
-  longPauseDuration,
-  setPomodoroSessionDuration,
-  setShortPauseDuration,
-  setLongPauseDuration,
-  setTimeLeft,
+  pomodoroSessionLength,
+  shortPauseLength,
+  longPauseLength,
+  setPomodoroSessionLength,
+  setShortPauseLength,
+  setLongPauseLength,
   theme,
   changeTheme,
 }) {
@@ -20,15 +19,14 @@ export default function Settings({
         <h2>Settings</h2>
       </div>
       <div className="settings-container">
-        <SettingsSection className={"duration-section"} title="Time (minutes)">
-          <DurationPicker
-            pomodoroSessionDuration={pomodoroSessionDuration}
-            shortPauseDuration={shortPauseDuration}
-            longPauseDuration={longPauseDuration}
-            setLongPauseDuration={setLongPauseDuration}
-            setPomodoroSessionDuration={setPomodoroSessionDuration}
-            setShortPauseDuration={setShortPauseDuration}
-            setTimeLeft={setTimeLeft}
+        <SettingsSection className={"length-section"} title="Time (minutes)">
+          <SessionLengthPicker
+            pomodoroSessionLength={pomodoroSessionLength}
+            shortPauseLength={shortPauseLength}
+            longPauseLength={longPauseLength}
+            setLongPauseLength={setLongPauseLength}
+            setPomodoroSessionLength={setPomodoroSessionLength}
+            setShortPauseLength={setShortPauseLength}
           />
         </SettingsSection>
         <SettingsSection title="Font">

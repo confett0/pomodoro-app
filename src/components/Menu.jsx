@@ -2,28 +2,28 @@ export default function Menu({
   setNewTimer,
   activeTab,
   setActiveTab,
-  pomodoroSessionDuration,
-  shortPauseDuration,
-  longPauseDuration,
+  pomodoroSessionLength,
+  shortPauseLength,
+  longPauseLength,
 }) {
   const tabs = [
-    { label: "pomodoro", duration: pomodoroSessionDuration },
-    { label: "short break", duration: shortPauseDuration },
-    { label: "long break", duration: longPauseDuration },
+    { label: "pomodoro", length: pomodoroSessionLength },
+    { label: "short break", length: shortPauseLength },
+    { label: "long break", length: longPauseLength },
   ];
-  const handleClick = (label, duration) => {
-    setNewTimer(duration); // move setNewTimerLogic to start timer button
+  const handleClick = (label, length) => {
+    setNewTimer(length); // move setNewTimerLogic to start timer button
     setActiveTab(label);
   };
 
   return (
     <nav>
       <ul>
-        {tabs.map(({ label, duration }) => (
+        {tabs.map(({ label, length }) => (
           <li
             key={label}
             className={activeTab === label ? "active" : ""}
-            onClick={() => handleClick(label, duration)}
+            onClick={() => handleClick(label, length)}
           >
             {label}
           </li>
