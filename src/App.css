@@ -79,25 +79,34 @@ li.active {
 
 /* Timer */
 
-.timer {
-  background-color: var(--timer-background-color);
+.timer-wrapper {
   border-radius: 50%;
-  height: min(25rem, 95vw);
-  width: min(25rem, 95vw);
   box-shadow:
     -50px -50px 50px #272c5a,
     50px 50px 50px #121530;
-  margin-bottom: 2rem;
+  height: min(25rem, 95vw);
+  width: min(25rem, 95vw);
   position: relative;
 }
 
-/*.timer::before {
+.timer-wrapper::before {
   content: "";
-  background-color: #f87070;
+  inset: -20px;
+  background: linear-gradient(-45deg, #2e325a, #0e112a);
   border-radius: 50%;
-  width: 26rem;
-  height: 26rem;
-} */
+  position: absolute;
+}
+
+.timer {
+  background-color: var(--timer-background-color);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  height: min(25rem, 95vw);
+  width: min(25rem, 95vw);
+  margin-bottom: 2rem;
+  position: relative;
+}
 
 .progress-bar {
   position: absolute;
