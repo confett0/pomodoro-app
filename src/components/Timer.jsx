@@ -21,14 +21,16 @@ export default function Timer({
     <div className="timer-wrapper">
       <div className="timer">
         <CircularProgressBar timeLeft={timeLeft} totalTime={totalTime} />
-        <p className="time-left">
-          <span>{String(Math.floor(timeLeft / 60)).padStart(2, "0")}</span>
-          <span>:</span>
-          <span>{String(timeLeft % 60).padStart(2, "0")}</span>
-        </p>
-        <button className="timer-button" onClick={handleClick}>
-          {buttonText}
-        </button>
+        <div className="timer-content">
+          <p className="time-left">
+            <span>{String(Math.floor(timeLeft / 60)).padStart(2, "0")}</span>
+            <span>:</span>
+            <span>{String(timeLeft % 60).padStart(2, "0")}</span>
+          </p>
+          <button className="timer-button" onClick={handleClick}>
+            {buttonText}
+          </button>
+        </div>
       </div>
     </div>
   );
