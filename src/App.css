@@ -211,7 +211,7 @@ nav li.active {
   background-color: #fff;
   border-radius: 1rem;
   color: var(--timer-background-color);
-  width: 540px;
+  width: min(540px, 85vw);
   text-align: left;
   position: relative;
 }
@@ -261,7 +261,7 @@ nav li.active {
 }
 
 .timer-inputs-wrap label {
-  color: var(--settings-light-gray);
+  color: color-mix(in srgb, var(--background-color), transparent 60%);
   font-size: 0.8rem;
   font-weight: bold;
 }
@@ -375,7 +375,33 @@ fieldset {
 
 /* Mobile */
 
-@media (max-width: 500px) {
+@media (max-width: 768px) {
+  .settings-container {
+    padding: 0 2rem 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .settings section {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .length-section h3 {
+    align-self: center;
+  }
+
+  .timer-inputs-wrap {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .timer-inputs-wrap label {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   .time-left {
     font-size: 5rem;
   }
