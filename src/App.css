@@ -178,11 +178,32 @@ nav li.active {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  visibility: hidden;
   z-index: 1000;
 }
 
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+
 .modal {
+  border-radius: 2rem;
   position: relative;
+  transform: translateY(20px) scale(0.98);
+  opacity: 0;
+  transition:
+    transform 0.25 ease,
+    opacity 0.25s ease;
+}
+
+.modal-overlay.open .modal {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 .modal-button {
@@ -404,5 +425,12 @@ fieldset {
 
   .time-left {
     font-size: 5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-overlay,
+  .modal-content {
+    transition: none;
   }
 }
