@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import "./App.css";
+import timerSessions from "./timerSessions";
 import Menu from "./components/Menu";
 import Timer from "./components/Timer";
 import Modal from "./components/Modal";
@@ -8,10 +9,9 @@ import SettingsButton from "./components/SettingsButton";
 
 function App() {
   const [timerState, setTimerState] = useState({
+    ...timerSessions[0],
+    timeLeft: timerSessions[0].duration,
     status: "idle",
-    session: "pomodoro",
-    timeLeft: 25 * 60,
-    totalTime: 25 * 60,
   });
 
   const [pomodoroSessionLength, setPomodoroSessionLength] = useState(
@@ -19,20 +19,13 @@ function App() {
   );
   const [shortPauseLength, setShortPauseLength] = useState(5 * 60);
   const [longPauseLength, setLongPauseLength] = useState(15 * 60);
-  const [timeLeft, setTimeLeft] = useState(pomodoroSessionLength);
-  const [isTimerOn, setIsTimerOn] = useState(false);
-  const [isTimerPaused, setIsTimerPaused] = useState(false);
-  const [activeTab, setActiveTab] = useState("pomodoro");
+  const [activeTab, setActiveTab] =
+    useState(0); /* 0 : pomodoro, 1 : short pause, 2 : long pause */
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [theme, setTheme] = useState({
     color: "var(--coral-color)",
     font: "var(--font-sans)",
   });
-  const timerLengths = {
-    pomodoro: pomodoroSessionLength,
-    "short break": shortPauseLength,
-    "long break": longPauseLength,
-  };
   const intervalRef = useRef(null);
 
   useEffect(() => {
@@ -67,11 +60,22 @@ function App() {
     intervalRef.current = null;
   };
 
-  const setNewTimer = (newTimeLeft) => {
+  const setNewTimer = (timerId) => {
     clearInterval(intervalRef.current);
-    setIsTimerOn(false);
-    setIsTimerPaused(false);
-    setTimeLeft(newTimeLeft);
+    intervalRef.current = null;
+
+    const newTimer = timerSessions[timerId];
+
+    setTimerState({
+      ...newTimer,
+      status: "idle",
+      timeLeft: newTimer.duration,
+    });
+  };
+
+  const handleTabChange = (tabId) => {
+    setActiveTab(tabId);
+    setNewTimer(tabId);
   };
 
   const changeTheme = (e) => {
@@ -84,10 +88,6 @@ function App() {
     });
   };
 
-  const handleTabChange = (tab) => {
-    setActiveTab(tab);
-  };
-
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
 
@@ -95,7 +95,7 @@ function App() {
     <>
       <img src="src/assets/logo.svg" alt="Pomodoro App logo" />
       <Menu
-        tabs={Object.keys(timerLengths)}
+        timerSessions={timerSessions}
         activeTab={activeTab}
         handleTabChange={handleTabChange}
       />

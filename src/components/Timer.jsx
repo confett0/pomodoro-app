@@ -3,7 +3,6 @@ import CircularProgressBar from "./CircularProgressBar";
 export default function Timer({ timerState, startTimer, pauseTimer }) {
   const isTimerOn = timerState.status === "running";
   const isTimerPaused = timerState.status === "paused";
-  // const displayTime = isTimerOn ? Math.floor(timeLeft / 60) : totalTime / 60;
   const buttonText = !isTimerOn ? "Start" : isTimerPaused ? "Resume" : "Pause";
   const handleClick = () => {
     if (!isTimerPaused && isTimerOn) {
@@ -18,7 +17,7 @@ export default function Timer({ timerState, startTimer, pauseTimer }) {
       <div className="timer">
         <CircularProgressBar
           timeLeft={timerState.timeLeft}
-          totalTime={timerState.totalTime}
+          totalTime={timerState.duration}
         />
         <div className="timer-content">
           <p className="time-left">
