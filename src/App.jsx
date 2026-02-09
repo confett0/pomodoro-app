@@ -7,6 +7,13 @@ import Settings from "./components/Settings";
 import SettingsButton from "./components/SettingsButton";
 
 function App() {
+  const [timerState, setTimerState] = useState({
+    status: "idle",
+    session: "pomodoro",
+    timeLeft: 25 * 60,
+    totalTime: 25 * 60,
+  });
+
   const [pomodoroSessionLength, setPomodoroSessionLength] = useState(
     25 * 60 /* seconds */,
   );
@@ -27,7 +34,6 @@ function App() {
     "long break": longPauseLength,
   };
   const intervalRef = useRef(null);
-  const totalTime = timerLengths[activeTab];
 
   useEffect(() => {
     document.documentElement.style.setProperty("--font", theme.font);
@@ -37,29 +43,26 @@ function App() {
   const startTimer = () => {
     if (intervalRef.current) return;
 
-    if (!isTimerPaused) {
-      setNewTimer(totalTime);
-    }
-
-    setIsTimerOn(true);
-    setIsTimerPaused(false);
-
     intervalRef.current = setInterval(() => {
-      setTimeLeft((prev) => {
-        if (prev <= 1) {
+      setTimerState((prev) => {
+        if (prev.timeLeft <= 1) {
           clearInterval(intervalRef.current);
           intervalRef.current = null;
-          setIsTimerOn(false);
-          // add restart logic
-          return 0;
+          return {
+            ...prev,
+            timeLeft: 0,
+            status: "completed",
+          };
         }
-        return prev - 1;
+        return { ...prev, status: "running", timeLeft: prev.timeLeft - 1 };
       });
     }, 1000);
   };
 
   const pauseTimer = () => {
-    setIsTimerPaused(true);
+    setTimerState((prev) => {
+      return { ...prev, status: "paused" };
+    });
     clearInterval(intervalRef.current);
     intervalRef.current = null;
   };
@@ -97,12 +100,9 @@ function App() {
         handleTabChange={handleTabChange}
       />
       <Timer
-        timeLeft={timeLeft}
-        totalTime={totalTime}
+        timerState={timerState}
         startTimer={startTimer}
         pauseTimer={pauseTimer}
-        isTimerOn={isTimerOn}
-        isTimerPaused={isTimerPaused}
       />
       <SettingsButton openModal={openModal} />
       <Modal isOpen={isModalOpen} onClose={closeModal}>
