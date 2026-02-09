@@ -6,13 +6,6 @@ import Modal from "./components/Modal";
 import Settings from "./components/Settings";
 import SettingsButton from "./components/SettingsButton";
 
-// check timer display
-// restart function
-// all this * 60 and / 60 is confusing
-// test
-// settings resizing for mobile
-// check responsivity and design
-
 function App() {
   const [pomodoroSessionLength, setPomodoroSessionLength] = useState(
     25 * 60 /* seconds */,

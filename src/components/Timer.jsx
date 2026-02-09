@@ -1,8 +1,6 @@
 import CircularProgressBar from "./CircularProgressBar";
 
 export default function Timer({
-  // valuta estrazione componenti TimerDisplay e TimerButton
-  // clean clean clean
   selectedDuration,
   timeLeft,
   totalTime,
@@ -29,7 +27,7 @@ export default function Timer({
           <p className="time-left">
             <span>{String(displayTime).padStart(2, "0")}</span>
             <span>:</span>
-            <span>{String(timeLeft % 60).padStart(2, "0")}</span>
+            <span>{String(displayTime % 60).padStart(2, "0")}</span>
           </p>
           <button className="timer-button" onClick={handleClick}>
             {buttonText}
