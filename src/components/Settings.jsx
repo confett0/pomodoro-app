@@ -4,12 +4,8 @@ import FontPicker from "./FontPicker";
 import ColorPicker from "./ColorPicker";
 
 export default function Settings({
-  pomodoroSessionLength,
-  shortPauseLength,
-  longPauseLength,
-  setPomodoroSessionLength,
-  setShortPauseLength,
-  setLongPauseLength,
+  sessionDuration,
+  changeSessionDuration,
   theme,
   changeTheme,
 }) {
@@ -21,12 +17,8 @@ export default function Settings({
       <div className="settings-container">
         <SettingsSection className={"length-section"} title="Time (minutes)">
           <SessionLengthPicker
-            pomodoroSessionLength={pomodoroSessionLength}
-            shortPauseLength={shortPauseLength}
-            longPauseLength={longPauseLength}
-            setLongPauseLength={setLongPauseLength}
-            setPomodoroSessionLength={setPomodoroSessionLength}
-            setShortPauseLength={setShortPauseLength}
+            sessionDuration={sessionDuration}
+            changeSessionDuration={changeSessionDuration}
           />
         </SettingsSection>
         <SettingsSection title="Font">

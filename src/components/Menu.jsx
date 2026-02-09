@@ -1,15 +1,14 @@
-export default function Menu({ timerSessions, activeTab, handleTabChange }) {
+export default function Menu({ tabs, activeTab, handleTabChange }) {
   return (
     <nav>
       <ul>
-        {timerSessions.map((session, id) => (
+        {tabs.map((label) => (
           <li
-            key={id}
-            id={id}
-            className={activeTab === id ? "active" : ""}
-            onClick={() => handleTabChange(id)}
+            key={label}
+            className={activeTab === label ? "active" : ""}
+            onClick={() => handleTabChange(label)}
           >
-            {session.name}
+            {label}
           </li>
         ))}
       </ul>
