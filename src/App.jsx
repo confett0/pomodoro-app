@@ -12,11 +12,7 @@ function App() {
   );
   const [shortPauseLength, setShortPauseLength] = useState(5 * 60);
   const [longPauseLength, setLongPauseLength] = useState(15 * 60);
-  const [selectedDuration, setSelectedDuration] = useState(
-    pomodoroSessionLength / 60,
-  ); // to show on timer display
   const [timeLeft, setTimeLeft] = useState(pomodoroSessionLength);
-  const [totalTime, setTotalTime] = useState(pomodoroSessionLength);
   const [isTimerOn, setIsTimerOn] = useState(false);
   const [isTimerPaused, setIsTimerPaused] = useState(false);
   const [activeTab, setActiveTab] = useState("pomodoro");
@@ -31,6 +27,7 @@ function App() {
     "long break": longPauseLength,
   };
   const intervalRef = useRef(null);
+  const totalTime = timerLengths[activeTab];
 
   useEffect(() => {
     document.documentElement.style.setProperty("--font", theme.font);
@@ -41,7 +38,6 @@ function App() {
     if (intervalRef.current) return;
 
     if (!isTimerPaused) {
-      const totalTime = timerLengths[activeTab];
       setNewTimer(totalTime);
     }
 
@@ -73,7 +69,6 @@ function App() {
     setIsTimerOn(false);
     setIsTimerPaused(false);
     setTimeLeft(newTimeLeft);
-    setTotalTime(newTimeLeft);
   };
 
   const changeTheme = (e) => {
@@ -88,7 +83,6 @@ function App() {
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
-    setSelectedDuration(timerLengths[tab] / 60);
   };
 
   const openModal = () => setIsModalOpen(true);
@@ -103,7 +97,6 @@ function App() {
         handleTabChange={handleTabChange}
       />
       <Timer
-        selectedDuration={selectedDuration}
         timeLeft={timeLeft}
         totalTime={totalTime}
         startTimer={startTimer}

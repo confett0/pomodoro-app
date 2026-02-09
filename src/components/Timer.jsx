@@ -1,7 +1,6 @@
 import CircularProgressBar from "./CircularProgressBar";
 
 export default function Timer({
-  selectedDuration,
   timeLeft,
   totalTime,
   startTimer,
@@ -9,7 +8,7 @@ export default function Timer({
   isTimerOn,
   isTimerPaused,
 }) {
-  const displayTime = isTimerOn ? Math.floor(timeLeft / 60) : selectedDuration;
+  const displayTime = isTimerOn ? Math.floor(timeLeft / 60) : totalTime / 60;
   const buttonText = !isTimerOn ? "Start" : isTimerPaused ? "Resume" : "Pause";
   const handleClick = () => {
     if (!isTimerPaused && isTimerOn) {
@@ -27,7 +26,7 @@ export default function Timer({
           <p className="time-left">
             <span>{String(displayTime).padStart(2, "0")}</span>
             <span>:</span>
-            <span>{String(displayTime % 60).padStart(2, "0")}</span>
+            <span>{String(timeLeft % 60).padStart(2, "0")}</span>
           </p>
           <button className="timer-button" onClick={handleClick}>
             {buttonText}
