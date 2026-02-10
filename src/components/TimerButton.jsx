@@ -1,22 +1,13 @@
 export default function TimerButton({ status, handleClick }) {
-  let buttonText;
-  switch (status) {
-    case "idle":
-      buttonText = "Start";
-      break;
-    case "running":
-      buttonText = "Pause";
-      break;
-    case "paused":
-      buttonText = "Resume";
-      break;
-    case "completed":
-      buttonText = "Restart";
-      break;
-  }
+  const buttonLabels = {
+    idle: "Start",
+    running: "Pause",
+    paused: "Resume",
+    completed: "Restart",
+  };
   return (
     <button className="timer-button" onClick={handleClick}>
-      {buttonText}
+      {buttonLabels[status]}
     </button>
   );
 }
