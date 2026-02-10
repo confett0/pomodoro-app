@@ -1,4 +1,4 @@
-export default function TimerButton({ status }) {
+export default function TimerButton({ status, handleClick }) {
   let buttonText;
   switch (status) {
     case "idle":
