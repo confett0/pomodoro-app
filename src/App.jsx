@@ -76,6 +76,17 @@ function App() {
     setSessionDuration((prev) => {
       return { ...prev, [sessionName]: newDuration };
     });
+    // reset timer only if editing the active session and timer is not running
+    if (sessionName === activeTab && timerState.status !== "running") {
+      setTimerState((prev) => {
+        return {
+          ...prev,
+          duration: newDuration,
+          timeLeft: newDuration,
+          status: "idle",
+        };
+      });
+    }
   };
 
   const changeTheme = (e) => {
