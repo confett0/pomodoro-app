@@ -1,7 +1,4 @@
 export default function CircularProgressBar({ timerState }) {
-  // valuta vector-effect="non-scaling-stroke" se vuoi stroke costante
-  // usare will-change: stroke-dashoffset per animazioni più fluide
-
   const { timeLeft, duration, status } = timerState;
   const r = 180;
   const circ = 2 * Math.PI * r;
