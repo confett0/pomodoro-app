@@ -15,10 +15,7 @@ export default function Timer({ timerState, startTimer, pauseTimer }) {
   return (
     <div className="timer-wrapper">
       <div className="timer">
-        <CircularProgressBar
-          timeLeft={timerState.timeLeft}
-          totalTime={timerState.duration}
-        />
+        <CircularProgressBar timerState={timerState} />
         <div className="timer-content">
           <p className="time-left">
             <span>

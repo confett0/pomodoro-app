@@ -1,9 +1,12 @@
-export default function CircularProgressBar({ timeLeft, totalTime }) {
+export default function CircularProgressBar({ timerState }) {
   // valuta vector-effect="non-scaling-stroke" se vuoi stroke costante
   // usare will-change: stroke-dashoffset per animazioni più fluide
+
+  const { timeLeft, duration, status } = timerState;
   const r = 180;
   const circ = 2 * Math.PI * r;
-  let progress = 1 - timeLeft / totalTime;
+  const progress = 1 - timeLeft / duration;
+
   return (
     <svg className="progress-bar" viewBox="0 0 400 400">
       <circle
@@ -22,7 +25,7 @@ export default function CircularProgressBar({ timeLeft, totalTime }) {
         fill="none"
         strokeWidth="10"
         strokeDasharray={circ}
-        strokeDashoffset={circ * progress} // progress = 0 to 1
+        strokeDashoffset={status === "completed" ? 0 : circ * progress} // progress = 0 to 1
         strokeLinecap="round"
         transform="rotate(-90 200 200)" // start from top
         style={{ transition: "stroke-dashoffset 1s linear" }}
