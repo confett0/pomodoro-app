@@ -1,8 +1,17 @@
 import CircularProgressBar from "./CircularProgressBar";
 import TimerDisplay from "./TimerDisplay";
 import TimerButton from "./TimerButton";
+import chimeSound from "../assets/sounds/chime.mp3";
+import { useEffect } from "react";
 
 export default function Timer({ timerState, startTimer, pauseTimer }) {
+  useEffect(() => {
+    if (timerState.status === "completed") {
+      const sound = new Audio(chimeSound);
+      sound.play();
+    }
+  }, [timerState.status]);
+
   const handleClick = () => {
     if (timerState.status === "running") {
       pauseTimer();
