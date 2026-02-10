@@ -4,6 +4,7 @@ import FontPicker from "./FontPicker";
 import ColorPicker from "./ColorPicker";
 
 export default function Settings({
+  sessions,
   sessionDuration,
   changeSessionDuration,
   theme,
@@ -17,6 +18,7 @@ export default function Settings({
       <div className="settings-container">
         <SettingsSection className={"length-section"} title="Time (minutes)">
           <SessionLengthPicker
+            sessions={sessions}
             sessionDuration={sessionDuration}
             changeSessionDuration={changeSessionDuration}
           />

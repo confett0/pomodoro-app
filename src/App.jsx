@@ -118,6 +118,7 @@ function App() {
       <SettingsButton openModal={openModal} />
       <Modal isOpen={isModalOpen} onClose={closeModal}>
         <Settings
+          sessions={Object.keys(sessionDuration)}
           sessionDuration={sessionDuration}
           changeSessionDuration={changeSessionDuration}
           theme={theme}
