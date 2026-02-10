@@ -130,7 +130,7 @@ nav li.active {
   flex-direction: column;
 }
 
-.time-left {
+.timer-display {
   font-size: 6rem;
   font-weight: bold;
   position: relative;
