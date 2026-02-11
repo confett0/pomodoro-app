@@ -136,6 +136,16 @@ nav li.active {
   position: relative;
 }
 
+.completed {
+  animation: blink 400ms linear 0s 2;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
 .timer-button {
   background-color: transparent;
   color: var(--text-color);

@@ -25,7 +25,7 @@ export default function Timer({ timerState, startTimer, pauseTimer }) {
       <div className="timer">
         <CircularProgressBar timerState={timerState} />
         <div className="timer-content">
-          <TimerDisplay timeLeft={timerState.timeLeft} />
+          <TimerDisplay timerState={timerState} />
           <TimerButton status={timerState.status} handleClick={handleClick} />
         </div>
       </div>
