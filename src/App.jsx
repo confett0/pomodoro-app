@@ -31,18 +31,30 @@ function App() {
   const startTimer = () => {
     if (intervalRef.current) return;
 
+    const endTime = Date.now() + timerState.timeLeft * 1000; // ms
+
     intervalRef.current = setInterval(() => {
-      setTimerState((prev) => {
-        if (prev.timeLeft <= 1) {
-          clearInterval(intervalRef.current);
-          intervalRef.current = null;
+      const newTimeLeft = Math.max(
+        0,
+        Math.round((endTime - Date.now()) / 1000),
+      );
+
+      if (newTimeLeft <= 0) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+
+        setTimerState((prev) => {
           return {
             ...prev,
             timeLeft: 0,
             status: "completed",
           };
-        }
-        return { ...prev, status: "running", timeLeft: prev.timeLeft - 1 };
+        });
+        return;
+      }
+
+      setTimerState((prev) => {
+        return { ...prev, status: "running", timeLeft: newTimeLeft };
       });
     }, 1000);
   };
