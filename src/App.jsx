@@ -38,7 +38,7 @@ function App() {
       const newTimeLeft = Math.max(
         0,
         Math.round((endTime - Date.now()) / 1000),
-      ); // Math.max() is used to avoid negative values caused by setInterval's inaccuracy
+      ); // Math.max() is used to avoid negative values
 
       if (newTimeLeft <= 0) {
         clearInterval(intervalRef.current);
