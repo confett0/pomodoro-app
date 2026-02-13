@@ -6,6 +6,7 @@ import Timer from "./components/Timer";
 import Modal from "./components/Modal";
 import Settings from "./components/Settings";
 import SettingsButton from "./components/SettingsButton";
+import logo from "/src/assets/logo.svg";
 
 function App() {
   const [sessionDuration, setSessionDuration] = useState(DEFAULT_DURATIONS);
@@ -116,7 +117,7 @@ function App() {
 
   return (
     <>
-      <img src="src/assets/logo.svg" alt="Pomodoro App logo" />
+      <img src={logo} alt="Pomodoro App logo" />
       <Menu
         tabs={Object.keys(sessionDuration)}
         activeTab={activeTab}
