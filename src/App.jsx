@@ -38,7 +38,7 @@ function App() {
       const newTimeLeft = Math.max(
         0,
         Math.round((endTime - Date.now()) / 1000),
-      );
+      ); // Math.max() is used to avoid negative values caused by setInterval's inaccuracy
 
       if (newTimeLeft <= 0) {
         clearInterval(intervalRef.current);
@@ -87,7 +87,7 @@ function App() {
 
   const changeSessionDuration = (sessionName, newDuration) => {
     setSessionDuration((prev) => {
-      return { ...prev, [sessionName]: newDuration.toString() };
+      return { ...prev, [sessionName]: newDuration };
     });
     // reset timer only if editing the active session and timer is not running
     if (sessionName === activeTab && timerState.status !== "running") {
