@@ -3,6 +3,13 @@ export default function SessionLengthPicker({
   changeSessionDuration,
   sessions,
 }) {
+  const handleChange = (e, session) => {
+    const val = +e.target.value * 60;
+    if (!isNaN(val) || val > 0) {
+      changeSessionDuration(session, val);
+    }
+  };
+
   return (
     <div className="timer-inputs-wrap">
       {sessions.map((session) => (
@@ -13,9 +20,7 @@ export default function SessionLengthPicker({
             name={session}
             id={`${session}-input`}
             value={sessionDuration[session] / 60}
-            onChange={(e) =>
-              changeSessionDuration(session, +e.target.value * 60)
-            }
+            onChange={(e) => handleChange(e, session)}
           />
         </label>
       ))}

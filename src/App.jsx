@@ -86,7 +86,7 @@ function App() {
 
   const changeSessionDuration = (sessionName, newDuration) => {
     setSessionDuration((prev) => {
-      return { ...prev, [sessionName]: newDuration };
+      return { ...prev, [sessionName]: newDuration.toString() };
     });
     // reset timer only if editing the active session and timer is not running
     if (sessionName === activeTab && timerState.status !== "running") {
