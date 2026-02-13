@@ -4,6 +4,7 @@ export default function SessionLengthPicker({
   sessionDuration,
   changeSessionDuration,
 }) {
+  // local state to temporarily allow invalid inputs (like "") when user is typing
   const [localValues, setLocalValues] = useState(() => {
     const values = {};
     Object.keys(sessionDuration).forEach(
