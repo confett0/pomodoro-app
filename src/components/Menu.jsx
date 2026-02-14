@@ -6,6 +6,7 @@ export default function Menu({ tabs, activeTab, handleTabChange }) {
           <li role="presentation" key={label}>
             <button
               role="tab"
+              aria-selected={activeTab === label}
               className={activeTab === label ? "menu-tab active" : "menu-tab"}
               onClick={() => handleTabChange(label)}
             >
