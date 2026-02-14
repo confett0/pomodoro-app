@@ -3,12 +3,14 @@ export default function Menu({ tabs, activeTab, handleTabChange }) {
     <nav>
       <ul>
         {tabs.map((label) => (
-          <li
-            key={label}
-            className={activeTab === label ? "active" : ""}
-            onClick={() => handleTabChange(label)}
-          >
-            {label}
+          <li role="presentation" key={label}>
+            <button
+              role="tab"
+              className={activeTab === label ? "menu-tab active" : "menu-tab"}
+              onClick={() => handleTabChange(label)}
+            >
+              {label}
+            </button>
           </li>
         ))}
       </ul>

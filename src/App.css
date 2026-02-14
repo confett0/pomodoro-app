@@ -66,23 +66,30 @@ nav ul {
 }
 
 nav li {
+  height: 100%;
+  width: 32%;
+}
+
+.menu-tab {
+  background-color: transparent;
   border-radius: 2rem;
+  color: #d7e0ff;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   font-weight: bold;
-  opacity: 0.4;
   height: 100%;
-  width: 32%;
+  opacity: 0.4;
+  width: 100%;
   transition: 300ms ease-in-out;
 }
 
-nav li:hover {
+.menu-tab:hover {
   opacity: 1;
 }
 
-nav li.active {
+.menu-tab.active {
   background-color: var(--accent-color);
   color: var(--background-color);
   opacity: 1;
