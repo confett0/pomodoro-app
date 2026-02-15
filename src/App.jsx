@@ -29,6 +29,15 @@ function App() {
     document.documentElement.style.setProperty("--accent-color", theme.color);
   }, [theme]);
 
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+  }, []); // clear interval when component unmounts
+
   const startTimer = () => {
     if (intervalRef.current) return;
 
