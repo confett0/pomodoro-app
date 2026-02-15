@@ -30,13 +30,14 @@ function App() {
   }, [theme]);
 
   useEffect(() => {
+    // clear interval if component unmounts when timer is running to avoid memory leak
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
       }
     };
-  }, []); // clear interval when component unmounts
+  }, []);
 
   const startTimer = () => {
     if (intervalRef.current) return;
