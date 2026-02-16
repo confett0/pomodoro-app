@@ -17,27 +17,13 @@ function App() {
     status: "idle",
   });
   const [activeTab, setActiveTab] = useState("pomodoro");
+  const [pomodoroSessionCount, setPomodoroSessionCount] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [theme, setTheme] = useState({
     color: "var(--coral-color)",
     font: "var(--font-sans)",
   });
   const intervalRef = useRef(null);
-
-  useEffect(() => {
-    document.documentElement.style.setProperty("--font", theme.font);
-    document.documentElement.style.setProperty("--accent-color", theme.color);
-  }, [theme]);
-
-  useEffect(() => {
-    // clear interval if component unmounts when timer is running to avoid memory leak
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
-    };
-  }, []);
 
   const startTimer = () => {
     if (intervalRef.current) return;
@@ -53,7 +39,7 @@ function App() {
       if (newTimeLeft <= 0) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
-
+        setPomodoroSessionCount((prev) => prev + 1);
         setTimerState((prev) => {
           return {
             ...prev,
@@ -95,6 +81,19 @@ function App() {
     setNewTimer(tabName);
   };
 
+  const getNextSession = () => {
+    if (activeTab === "short pause" || activeTab === "long pause") {
+      return "pomodoro";
+    } else if (activeTab === "pomodoro") {
+      if (pomodoroSessionCount % 4 === 0) {
+        return "long pause";
+      } else {
+        return "short pause";
+      }
+    }
+    return "pomodoro"; // just for safety if activeTab doesn't match
+  };
+
   const changeSessionDuration = (sessionName, newDuration) => {
     setSessionDuration((prev) => {
       return { ...prev, [sessionName]: newDuration };
@@ -124,6 +123,32 @@ function App() {
 
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty("--font", theme.font);
+    document.documentElement.style.setProperty("--accent-color", theme.color);
+  }, [theme]);
+
+  useEffect(() => {
+    // clear interval if component unmounts when timer is running to avoid memory leak
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    // switch automatically to next session when timer is completed
+    if (timerState.status === "completed") {
+      const delay = setTimeout(() => {
+        const nextSession = getNextSession();
+        handleTabChange(nextSession);
+      }, 2000);
+      return () => clearTimeout(delay);
+    }
+  }, [timerState.status]);
 
   return (
     <>
