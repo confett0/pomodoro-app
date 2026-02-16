@@ -3,10 +3,14 @@ export default function TimerButton({ status, handleClick }) {
     idle: "Start",
     running: "Pause",
     paused: "Resume",
-    completed: "Restart",
+    completed: "Session completed!",
   };
   return (
-    <button className="timer-button" onClick={handleClick}>
+    <button
+      className="timer-button"
+      onClick={handleClick}
+      disabled={status === "completed"}
+    >
       {buttonLabels[status]}
     </button>
   );

@@ -145,7 +145,7 @@ function App() {
       const delay = setTimeout(() => {
         const nextSession = getNextSession();
         handleTabChange(nextSession);
-      }, 2000);
+      }, 3000);
       return () => clearTimeout(delay);
     }
   }, [timerState.status]);
