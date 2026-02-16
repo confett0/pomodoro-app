@@ -33,7 +33,7 @@ function App() {
     intervalRef.current = setInterval(() => {
       const newTimeLeft = Math.max(
         0,
-        Math.round((endTime - Date.now()) / 1000),
+        Math.round((endTime - Date.now()) / 1000)
       ); // Math.max() is used to avoid negative values
 
       if (newTimeLeft <= 0) {
