@@ -40,7 +40,7 @@ function App() {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
         setPomodoroSessionCount((prev) => {
-          return activeTab === "pomodoro" ? prev + 1 : prev;
+          return timerState.name === "pomodoro" ? prev + 1 : prev;
         });
         setTimerState((prev) => {
           return {
@@ -68,15 +68,15 @@ function App() {
 
   const handleTabChange = useCallback(
     // this function needs caching because it's used inside an effect
-    (tabName) => {
-      setActiveTab(tabName);
+    (sessionName) => {
+      setActiveTab(sessionName);
       // reset timer and clear existing interval
       clearInterval(intervalRef.current);
       intervalRef.current = null;
       setTimerState({
-        name: tabName,
-        duration: sessionDuration[tabName],
-        timeLeft: sessionDuration[tabName],
+        name: sessionName,
+        duration: sessionDuration[sessionName],
+        timeLeft: sessionDuration[sessionName],
         status: "idle",
       });
     },
@@ -88,7 +88,7 @@ function App() {
       return { ...prev, [sessionName]: newDuration };
     });
     // reset timer only if editing the active session and timer is not running
-    if (sessionName === activeTab && timerState.status !== "running") {
+    if (sessionName === timerState.name && timerState.status !== "running") {
       setTimerState((prev) => {
         return {
           ...prev,
@@ -133,7 +133,7 @@ function App() {
     if (timerState.status !== "completed") return;
 
     const getNextSession = () => {
-      if (activeTab.includes("pause")) return "pomodoro";
+      if (timerState.name.includes("pause")) return "pomodoro";
       return pomodoroSessionCount > 0 && pomodoroSessionCount % 4 === 0
         ? "long pause"
         : "short pause";
@@ -143,7 +143,12 @@ function App() {
       handleTabChange(nextSession);
     }, 3000);
     return () => clearTimeout(timeoutId);
-  }, [timerState.status, activeTab, pomodoroSessionCount, handleTabChange]);
+  }, [
+    timerState.status,
+    timerState.name,
+    pomodoroSessionCount,
+    handleTabChange,
+  ]);
 
   return (
     <>
