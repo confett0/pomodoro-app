@@ -39,7 +39,9 @@ function App() {
       if (newTimeLeft <= 0) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
-        setPomodoroSessionCount((prev) => prev + 1);
+        setPomodoroSessionCount((prev) => {
+          return activeTab === "pomodoro" ? prev + 1 : prev;
+        });
         setTimerState((prev) => {
           return {
             ...prev,
@@ -132,7 +134,9 @@ function App() {
 
     const getNextSession = () => {
       if (activeTab.includes("pause")) return "pomodoro";
-      return pomodoroSessionCount % 4 === 0 ? "long pause" : "short pause";
+      return pomodoroSessionCount > 0 && pomodoroSessionCount % 4 === 0
+        ? "long pause"
+        : "short pause";
     };
     const timeoutId = setTimeout(() => {
       const nextSession = getNextSession();
