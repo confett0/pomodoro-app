@@ -8,7 +8,7 @@ export default function SessionLengthPicker({
   const [localValues, setLocalValues] = useState(() => {
     const values = {};
     Object.keys(sessionDuration).forEach(
-      (session) => (values[session] = sessionDuration[session] / 60),
+      (session) => (values[session] = sessionDuration[session] / 60)
     );
     return values;
   });
@@ -16,23 +16,28 @@ export default function SessionLengthPicker({
 
   const handleChange = (e, session) => {
     const inputValue = e.target.value;
-    setLocalValues((prev) => ({ ...prev, [session]: inputValue }));
 
+    // allow empty input while typing
     if (inputValue === "") {
+      setLocalValues((prev) => ({ ...prev, [session]: "" }));
+      return;
+    }
+    // block session length above 99 minutes to avoid breaking the UI
+    if (inputValue.length > 2) {
       return;
     }
     const minutes = parseInt(inputValue, 10);
     if (!isNaN(minutes) && minutes > 0) {
+      setLocalValues((prev) => ({ ...prev, [session]: inputValue }));
       changeSessionDuration(session, minutes * 60);
     }
   };
 
   const handleBlur = (e, session) => {
-    const inputValue = e.target.value;
-    const minutes = parseInt(inputValue, 10);
+    const minutes = parseInt(e.target.value, 10);
 
-    // restore original value if necessary
-    if (inputValue === "" || isNaN(minutes) || minutes < 1) {
+    // restore default value if necessary
+    if (isNaN(minutes) || minutes < 1) {
       setLocalValues((prev) => ({
         ...prev,
         [session]: sessionDuration[session] / 60,
@@ -47,10 +52,12 @@ export default function SessionLengthPicker({
           {session}
           <input
             type="number"
+            inputMode="numeric"
+            pattern="[0-9]*"
             name={session}
             id={`${session}-input`}
             min="1"
-            max="120"
+            max="99"
             step="1"
             value={localValues[session]}
             onChange={(e) => handleChange(e, session)}
