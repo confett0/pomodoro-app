@@ -1,23 +1,25 @@
 export default function CircularProgressBar({ timerState }) {
   const { timeLeft, duration, status } = timerState;
-  const r = 180;
-  const circ = 2 * Math.PI * r;
+  const CIRCLE_RADIUS = 180;
+  const SVG_SIZE = 400;
+  const CIRCLE_CENTER = SVG_SIZE / 2;
+  const circ = 2 * Math.PI * CIRCLE_RADIUS;
   const progress = 1 - timeLeft / duration;
 
   return (
-    <svg className="progress-bar" viewBox="0 0 400 400">
+    <svg className="progress-bar" viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}>
       <circle
-        cx="200"
-        cy="200"
-        r={r}
+        cx={CIRCLE_CENTER}
+        cy={CIRCLE_CENTER}
+        r={CIRCLE_RADIUS}
         stroke="#eee"
         fill="none"
         strokeWidth="10"
       />
       <circle
-        cx="200"
-        cy="200"
-        r={r}
+        cx={CIRCLE_CENTER}
+        cy={CIRCLE_CENTER}
+        r={CIRCLE_RADIUS}
         stroke="var(--accent-color)"
         fill="none"
         strokeWidth="10"
