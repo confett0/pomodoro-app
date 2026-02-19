@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import "./App.css";
 import DEFAULT_DURATIONS from "./defaultDurations";
 import Menu from "./components/Menu";
@@ -64,35 +64,22 @@ function App() {
     intervalRef.current = null;
   };
 
-  const setNewTimer = (sessionName) => {
-    clearInterval(intervalRef.current);
-    intervalRef.current = null;
-
-    setTimerState({
-      name: sessionName,
-      duration: sessionDuration[sessionName],
-      timeLeft: sessionDuration[sessionName],
-      status: "idle",
-    });
-  };
-
-  const handleTabChange = (tabName) => {
-    setActiveTab(tabName);
-    setNewTimer(tabName);
-  };
-
-  const getNextSession = () => {
-    if (activeTab === "short pause" || activeTab === "long pause") {
-      return "pomodoro";
-    } else if (activeTab === "pomodoro") {
-      if (pomodoroSessionCount % 4 === 0) {
-        return "long pause";
-      } else {
-        return "short pause";
-      }
-    }
-    return "pomodoro"; // just for safety if activeTab doesn't match
-  };
+  const handleTabChange = useCallback(
+    // this function needs caching because it's used inside an effect
+    (tabName) => {
+      setActiveTab(tabName);
+      // reset timer and clear existing interval
+      clearInterval(intervalRef.current);
+      intervalRef.current = null;
+      setTimerState({
+        name: tabName,
+        duration: sessionDuration[tabName],
+        timeLeft: sessionDuration[tabName],
+        status: "idle",
+      });
+    },
+    [sessionDuration]
+  );
 
   const changeSessionDuration = (sessionName, newDuration) => {
     setSessionDuration((prev) => {
@@ -140,15 +127,19 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // switch automatically to next session when timer is completed
-    if (timerState.status === "completed") {
-      const delay = setTimeout(() => {
-        const nextSession = getNextSession();
-        handleTabChange(nextSession);
-      }, 3000);
-      return () => clearTimeout(delay);
-    }
-  }, [timerState.status]);
+    // switch to next session after 3 seconds when timer is completed
+    if (timerState.status !== "completed") return;
+
+    const getNextSession = () => {
+      if (activeTab.includes("pause")) return "pomodoro";
+      return pomodoroSessionCount % 4 === 0 ? "long pause" : "short pause";
+    };
+    const timeoutId = setTimeout(() => {
+      const nextSession = getNextSession();
+      handleTabChange(nextSession);
+    }, 3000);
+    return () => clearTimeout(timeoutId);
+  }, [timerState.status, activeTab, pomodoroSessionCount, handleTabChange]);
 
   return (
     <>
