@@ -9,19 +9,27 @@ import SettingsButton from "./components/SettingsButton";
 import logo from "/src/assets/logo.svg";
 
 function App() {
-  const [sessionDuration, setSessionDuration] = useState(DEFAULT_DURATIONS);
+  const [sessionDuration, setSessionDuration] = useState(() => {
+    const savedSessions = localStorage.getItem("sessions");
+    return savedSessions ? JSON.parse(savedSessions) : DEFAULT_DURATIONS;
+  });
   const [timerState, setTimerState] = useState({
     name: "pomodoro",
     duration: sessionDuration.pomodoro,
     timeLeft: sessionDuration.pomodoro,
     status: "idle",
   });
-  const [activeTab, setActiveTab] = useState("pomodoro");
   const [pomodoroSessionCount, setPomodoroSessionCount] = useState(0);
+  const [activeTab, setActiveTab] = useState("pomodoro");
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [theme, setTheme] = useState({
-    color: "var(--coral-color)",
-    font: "var(--font-sans)",
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("userTheme");
+    return savedTheme
+      ? JSON.parse(savedTheme)
+      : {
+          color: "var(--coral-color)",
+          font: "var(--font-sans)",
+        };
   });
   const intervalRef = useRef(null);
 
@@ -117,6 +125,11 @@ function App() {
     document.documentElement.style.setProperty("--font", theme.font);
     document.documentElement.style.setProperty("--accent-color", theme.color);
   }, [theme]);
+
+  useEffect(() => {
+    localStorage.setItem("sessions", JSON.stringify(sessionDuration));
+    localStorage.setItem("userTheme", JSON.stringify(theme));
+  }, [sessionDuration, theme]);
 
   useEffect(() => {
     // clear interval if component unmounts when timer is running to avoid memory leak
