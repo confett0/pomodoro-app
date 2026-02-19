@@ -3,7 +3,7 @@ export default function TimerButton({ status, handleClick }) {
     idle: "Start",
     running: "Pause",
     paused: "Resume",
-    completed: "Session completed!",
+    completed: "Completed!",
   };
   return (
     <button
