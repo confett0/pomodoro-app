@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import "./App.css";
-import DEFAULT_DURATIONS from "./defaultDurations";
+import { DEFAULT_DURATIONS, DEFAULT_THEME } from "./defaultSettings";
 import Menu from "./components/Menu";
 import Timer from "./components/Timer";
 import Modal from "./components/Modal";
@@ -30,18 +30,10 @@ function App() {
   const [theme, setTheme] = useState(() => {
     try {
       const savedTheme = localStorage.getItem("userTheme");
-      return savedTheme
-        ? JSON.parse(savedTheme)
-        : {
-            color: "var(--coral-color)",
-            font: "var(--font-sans)",
-          };
+      return savedTheme ? JSON.parse(savedTheme) : DEFAULT_THEME;
     } catch (err) {
       console.warn("Failed to load from localStorage: ", err);
-      return {
-        color: "var(--coral-color)",
-        font: "var(--font-sans)",
-      };
+      return DEFAULT_THEME;
     }
   });
   const intervalRef = useRef(null);
