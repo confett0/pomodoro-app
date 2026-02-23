@@ -102,8 +102,8 @@ nav li {
   box-shadow:
     -50px -50px 50px #272c5a,
     50px 50px 50px #121530;
-  height: min(25rem, 80vw);
-  width: min(25rem, 80vw);
+  height: min(410px, 80vw);
+  width: min(410px, 80vw);
   position: relative;
 }
 
@@ -118,8 +118,8 @@ nav li {
 .timer {
   background-color: var(--timer-background-color);
   border-radius: 50%;
-  height: min(400px, 80vw);
-  width: min(400px, 80vw);
+  height: min(410px, 80vw);
+  width: min(410px, 80vw);
   position: relative;
 }
 
@@ -130,7 +130,7 @@ nav li {
 
 .timer-content {
   position: absolute;
-  top: 53%; /* optical center */
+  top: 55%; /* optical center */
   left: 50%;
   transform: translate(-50%, -50%);
   display: flex;
@@ -442,7 +442,7 @@ fieldset {
     justify-content: space-between;
   }
 
-  .time-left {
+  .timer-display {
     font-size: 5rem;
   }
 }

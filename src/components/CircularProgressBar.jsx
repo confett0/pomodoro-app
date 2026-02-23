@@ -1,7 +1,7 @@
 export default function CircularProgressBar({ timerState }) {
   const { timeLeft, duration, status } = timerState;
-  const CIRCLE_RADIUS = 180;
-  const SVG_SIZE = 400;
+  const CIRCLE_RADIUS = 185;
+  const SVG_SIZE = 410;
   const CIRCLE_CENTER = SVG_SIZE / 2;
   const circ = 2 * Math.PI * CIRCLE_RADIUS;
   const progress = 1 - timeLeft / duration;
@@ -26,7 +26,7 @@ export default function CircularProgressBar({ timerState }) {
         strokeDasharray={circ}
         strokeDashoffset={status === "completed" ? 0 : circ * progress} // progress = 0 to 1
         strokeLinecap="round"
-        transform="rotate(-90 200 200)" // start from top
+        transform={`rotate(-90 ${CIRCLE_CENTER} ${CIRCLE_CENTER})`} // start from top
         style={{ transition: "stroke-dashoffset 1s linear" }}
       />
     </svg>
