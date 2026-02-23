@@ -4,7 +4,7 @@ export default function CircularProgressBar({ timerState }) {
   const SVG_SIZE = 410;
   const CIRCLE_CENTER = SVG_SIZE / 2;
   const circ = 2 * Math.PI * CIRCLE_RADIUS;
-  const progress = 1 - timeLeft / duration;
+  const progress = duration > 0 ? 1 - timeLeft / duration : 0; // avoid dividing by 0
 
   return (
     <svg className="progress-bar" viewBox={`0 0 ${SVG_SIZE} ${SVG_SIZE}`}>
