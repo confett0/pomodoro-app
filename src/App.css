@@ -170,6 +170,10 @@ nav li {
   color: var(--accent-color);
 }
 
+.timer-button:disabled {
+  cursor: not-allowed;
+}
+
 /* Settings button */
 
 .settings-button {
