@@ -118,8 +118,8 @@ nav li {
 .timer {
   background-color: var(--timer-background-color);
   border-radius: 50%;
-  height: min(25rem, 80vw);
-  width: min(25rem, 80vw);
+  height: min(400px, 80vw);
+  width: min(400px, 80vw);
   position: relative;
 }
 
@@ -135,6 +135,7 @@ nav li {
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .timer-display {
@@ -159,7 +160,8 @@ nav li {
   letter-spacing: 0.7rem;
   text-transform: uppercase;
   position: relative;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
+  padding: 0.5rem 1.5rem;
   transition: 300ms ease-in-out;
   z-index: 3;
 }
@@ -443,6 +445,20 @@ fieldset {
   .time-left {
     font-size: 5rem;
   }
+}
+
+/* Accessibility */
+
+.menu-tab:focus-visible,
+.timer-button:focus-visible,
+.settings-button:focus-visible,
+.modal-button:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 2px;
+}
+
+.menu-tab:focus:not(:focus-visible) {
+  outline: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
