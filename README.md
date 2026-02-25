@@ -8,7 +8,7 @@ A modern Pomodoro timer built with React, based on the design from [Frontend Men
 
 This project started as a simple timer and gradually evolved into a more robust application with improved timing accuracy, automatic session transitions, persistent user preferences, and accessibility considerations.
 
-![Pomodoro Timer Screenshot]([assets/screenshot.gif](https://github.com/confett0/pomodoro-app/blob/main/src/assets/screenshot.gif?raw=true))
+![Pomodoro Timer Screenshot](https://raw.githubusercontent.com/confett0/pomodoro-app/refs/heads/main/src/assets/screenshot.gif)
 
 ## Features
 
