@@ -131,6 +131,7 @@ function App() {
     document.documentElement.style.setProperty("--accent-color", theme.color);
   }, [theme]);
 
+  // Save user preferences
   useEffect(() => {
     try {
       localStorage.setItem("sessions", JSON.stringify(sessionDuration));
@@ -142,18 +143,26 @@ function App() {
     }
   }, [sessionDuration, theme]);
 
+  // Ask notification permission
   useEffect(() => {
-    // clear interval if component unmounts when timer is running to avoid memory leak
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-        intervalRef.current = null;
-      }
-    };
+    if ("Notification" in window && Notification.permission === "default") {
+      Notification.requestPermission();
+    }
   }, []);
 
+  // Send desktop notification when session is completed
   useEffect(() => {
-    // switch to next session after 3 seconds when timer is completed
+    if (timerState.status === "completed") {
+      if ("Notification" in window && Notification.permission === "granted") {
+        new Notification("Pomodoro Complete! 🍅", {
+          body: `${timerState.name} session finished.`,
+        });
+      }
+    }
+  }, [timerState.status, timerState.name]);
+
+  // Switch to next session after 3 seconds when timer is completed
+  useEffect(() => {
     if (timerState.status !== "completed") return;
 
     const getNextSession = () => {
@@ -173,6 +182,16 @@ function App() {
     pomodoroSessionCount,
     handleTabChange,
   ]);
+
+  // Clear interval if component unmounts when timer is running to avoid memory leak
+  useEffect(() => {
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
+      }
+    };
+  }, []);
 
   return (
     <>
