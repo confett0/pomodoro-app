@@ -8,7 +8,7 @@ A modern Pomodoro timer built with React, based on the design from [Frontend Men
 
 This project started as a simple timer and gradually evolved into a more robust application with improved timing accuracy, automatic session transitions, persistent user preferences, and accessibility considerations.
 
-![Pomodoro Timer Screenshot](./screenshot.png)
+![Pomodoro Timer Screenshot](./screenshot.gif)
 
 ## Features
 
@@ -103,6 +103,7 @@ pomodoro-timer/
 │   │   ├── CircularProgressBar.jsx
 │   │   ├── ColorPicker.jsx
 │   │   ├── FontPicker.jsx
+│   │   ├── Footer.jsx
 │   │   ├── Menu.jsx
 │   │   ├── Modal.jsx
 │   │   ├── SessionLengthPicker.jsx
