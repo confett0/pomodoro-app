@@ -6,6 +6,7 @@ import Timer from "./components/Timer";
 import Modal from "./components/Modal";
 import Settings from "./components/Settings";
 import SettingsButton from "./components/SettingsButton";
+import Footer from "./components/Footer";
 import logo from "/src/assets/logo.svg";
 
 function App() {
@@ -215,6 +216,7 @@ function App() {
           changeTheme={changeTheme}
         />
       </Modal>
+      <Footer />
     </>
   );
 }
