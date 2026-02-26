@@ -19,7 +19,7 @@ This project started as a simple timer and gradually evolved into a more robust 
 - Customizable theme (accent color and font)
 - Persistent user preferences via localStorage
 - Pause and resume functions
-- Sound notification on session completion
+- Sound and desktop notifications on session completion
 - Basic ARIA roles and keyboard navigation for improved accessibility
 - Responsive design
 
@@ -137,6 +137,7 @@ pomodoro-timer/
 - Handling a complex designs with gradients (including a circular border) using a combination of Flexbox and absolute positioning
 - Focus management in React with refs
 - Implementing WAI-ARIA patterns and keyboard navigation for accessibility
+- Creating desktop notifications
 
 ---
 
